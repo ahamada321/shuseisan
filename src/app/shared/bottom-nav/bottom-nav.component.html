@@ -1,0 +1,27 @@
+<div class="space-50"></div>
+<ul class="row text-center bottom_nav">
+  <li class="col-4">
+    <a
+      class="bottom_nav_link"
+      [ngClass]="{ bottom_nav_link_primary: titlee === '' }"
+      [routerLink]="['/']"
+      ><i class="bottom_nav_icon x2 nc-icon nc-zoom-split"></i>探しに行く</a
+    >
+  </li>
+  <li class="col-4">
+    <a
+      class="bottom_nav_link"
+      [ngClass]="{ bottom_nav_link_primary: titlee === 'user' }"
+      [routerLink]="['/user']"
+      ><i class="bottom_nav_icon x2 nc-icon nc-book-bookmark"></i>マイページ</a
+    >
+  </li>
+  <li class="col-4">
+    <a
+      class="bottom_nav_link"
+      [ngClass]="{ bottom_nav_link_primary: titlee === 'user/settings' }"
+      [routerLink]="['/user/settings']"
+      ><i class="bottom_nav_icon x2 nc-icon nc-circle-10"></i>アカウント設定</a
+    >
+  </li>
+</ul>

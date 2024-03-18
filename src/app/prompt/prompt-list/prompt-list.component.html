@@ -1,0 +1,77 @@
+<div class="space-70"></div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+          <p *ngFor="let error of errors">{{ error.detail }}</p>
+        </div>
+        <form
+          class="settings-form"
+          #textForm="ngForm"
+          (ngSubmit)="sendText(textForm)"
+        >
+          <div class="form-group">
+            <h3 class="title">修正してほしい文章</h3>
+            <textarea
+              type="text"
+              class="form-control textarea-limited"
+              placeholder="修正してほしい文章を入力して下さい"
+              [(ngModel)]="text"
+              name="text"
+              rows="10"
+              maxlength="1000"
+            ></textarea>
+            <h5>
+              <small
+                ><span id="textarea-limited-message" class="pull-right">
+                  <div *ngIf="!text">残文字数 1000</div>
+                  <div *ngIf="text">残文字数 {{ 1000 - text.length }}</div>
+                </span></small
+              >
+            </h5>
+          </div>
+
+          <div class="space-top"></div>
+          <div class="text-center">
+            <h4 class="description">本日はあと○回無料で修正できます</h4>
+            <button
+              [disabled]="!(textForm.valid && textForm.dirty && !isClicked)"
+              type="submit"
+              class="btn btn-success btn-lg btn-wd"
+            >
+              <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
+            </button>
+          </div>
+        </form>
+        <div class="text-center">
+          <a type="button" class="btn btn-link btn-success btn-lg">
+            広告非表示で回数も気にせず使いたい方
+          </a>
+        </div>
+        <div class="space-top"></div>
+        <div class="form-group">
+          <h3 class="title">修正された文章</h3>
+          <textarea
+            type="text"
+            class="form-control textarea-limited"
+            placeholder="修正された文章"
+            [(ngModel)]="result"
+            name="result"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="space-top"></div>
+        <div class="text-center">
+          <button
+            [disabled]="!(textForm.valid && textForm.dirty && !isClicked)"
+            type="submit"
+            class="btn btn-success btn-lg btn-wd"
+          >
+            修正された文章<br />をコピーする
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

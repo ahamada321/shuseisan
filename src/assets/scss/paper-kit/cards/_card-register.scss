@@ -1,0 +1,27 @@
+.card-register {
+  // background-color: #FF8F5E; Disabled by Hamada
+  border-radius: 8px;
+  // color: #fff; Disabled by Hamada
+  max-width: 400px; // Changed by Hamada
+  margin: 20px 0 70px;
+  min-height: 400px;
+  padding: 30px;
+
+  & label {
+    margin-top: 15px;
+  }
+  & .card-title {
+    // color: #B33C12; Disabled by Hamada
+    text-align: center;
+  }
+  & .btn {
+    margin-top: 20px; // Changed by Hamada
+  }
+  & .forgot {
+    text-align: center;
+  }
+
+  input {
+    margin-bottom: 8px;
+  } // Added from _examples.scss by Hamada
+}

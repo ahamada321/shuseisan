@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Quill editor
+quill-editor {
+  width: 100%;
+  .ql-container {
+    background-color: white;
+    height: 230px;
+  }
+
+  // Placeholder color
+  .ql-blank::before {
+    color: #b4b4b4 !important;
+  }
+}
+
+// Placeholder color
+.form-control {
+  &::-moz-placeholder {
+    color: #b4b4b4;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: #b4b4b4;
+  }
+
+  &::-webkit-input-placeholder {
+    color: #b4b4b4;
+  }
+}

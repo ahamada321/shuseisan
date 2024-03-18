@@ -1,0 +1,69 @@
+<div class="wrapper" *ngIf="prompt">
+  <div
+    class="page-header page-header-xs"
+    [ngStyle]="{
+      'background-image': 'url(assets/img/thumbnail/' + 12 + '.jpg)'
+    }"
+  >
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <h1 class="title">{{ title }}</h1>
+      </div>
+    </div>
+  </div>
+
+  <!--     *********     Detail info     *********      -->
+  <div class="section section-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <app-blog-chat
+            [character]="2"
+            [message]="'大事なメールを送る際にミスが多いのを直したい'"
+          ></app-blog-chat>
+          <app-blog-chat
+            [character]="3"
+            [message]="'メール文章の誤字脱字を手軽に直したい'"
+          ></app-blog-chat>
+
+          <div class="space-top"></div>
+          <p>
+            仕事で大事なメールを送った後に、誤字・脱字に気づいてしまった。。<br />
+            メールでの文章の言い回しが上手くできてなかったことで、取引先や上司の機嫌を損ねてしまった。。<br />
+            といった経験はありませんか？
+          </p>
+          <div class="space-top"></div>
+          <p>
+            ミスを減らしたいと思うのに、自分ではなかなか改善できず歯がゆい思いをしているときは、<span
+              class="text-primary"
+              >ChatGPTのプロンプト</span
+            >を使うことで、あなたの作った文章を、ChatGPTが<span
+              class="text-primary"
+              >第三者的な視点で添削</span
+            >してくれます！
+          </p>
+          <br />
+          <p>
+            手順は簡単！このカードを押してそのプロンプト（指令文）をコピー、利用手順通りにChatGPTに送信するだけです。
+          </p>
+          <div class="row">
+            <div class="col-11 col-sm-10 col-md-9 col-xl-7 ml-auto mr-auto">
+              <div class="space-top"></div>
+              <app-list-card [prompt]="prompt"></app-list-card>
+            </div>
+          </div>
+          <br />
+          <p>プロンプトの力を借りて仕事のミスを一気に減らしてみませんか？</p>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="!auth.isAuthenticated()">
+        <div class="space-50"></div>
+        <p>\ 今すぐ無料会員登録してプロンプトをGet! /</p>
+        <a [routerLink]="['/register']" class="btn btn-round btn-wd btn-primary"
+          >無料会員登録する</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

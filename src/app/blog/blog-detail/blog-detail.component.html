@@ -1,0 +1,69 @@
+<div class="wrapper" *ngIf="prompt">
+  <div
+    class="page-header page-header-xs"
+    [ngStyle]="{
+      'background-image': 'url(assets/img/thumbnail/' + 2 + '.jpg)'
+    }"
+  >
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <h1 class="title">{{ title }}</h1>
+      </div>
+    </div>
+  </div>
+
+  <!--     *********     Detail info     *********      -->
+  <div class="section section-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <app-blog-chat
+            [character]="2"
+            [message]="
+              '英語で実際に会話をするのはハードルが高い...英語がわかってないと思われるのは嫌だなぁ...'
+            "
+          ></app-blog-chat>
+          <app-blog-chat
+            [character]="3"
+            [message]="
+              'ネイティブの人と英会話したいけど、実際に誰かと話す勇気や労力、体力がない'
+            "
+          ></app-blog-chat>
+
+          <div class="space-top"></div>
+          <p>
+            英会話を練習したい！と思っても自分一人ではなかなか続かないし、今すぐ外国人と話すのはとても勇気がいるなと感じたことはありませんか？
+          </p>
+          <div class="space-top"></div>
+          <p>
+            そんな時に<span class="text-primary">ChatGPTのプロンプト</span
+            >を使うことで、いとも簡単に<span class="text-primary"
+              >英語ネイティブの人と英会話を練習</span
+            >することができちゃいます！<br />
+            お金や時間の節約ができることはもちろん、日々の英会話の会話記録も手元に残るので、あとから復習をする際にも便利です。
+          </p>
+          <br />
+          <p>
+            手順は簡単！このカードを押してそのプロンプト（指令文）をコピー、利用手順通りにChatGPTに送信するだけです。
+          </p>
+          <div class="row">
+            <div class="col-11 col-sm-10 col-md-9 col-xl-7 ml-auto mr-auto">
+              <div class="space-top"></div>
+              <app-list-card [prompt]="prompt"></app-list-card>
+            </div>
+          </div>
+          <br />
+          <p>これで英会話の練習がびっくりするほど捗ります！</p>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="!auth.isAuthenticated()">
+        <div class="space-50"></div>
+        <p>\ 今すぐ無料会員登録してプロンプトをGet! /</p>
+        <a [routerLink]="['/register']" class="btn btn-round btn-wd btn-primary"
+          >無料会員登録する</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

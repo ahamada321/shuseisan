@@ -1,0 +1,50 @@
+<a
+  [routerLink]="['/prompt', prompt._id]"
+  class="card"
+  data-background="image"
+  [ngStyle]="{
+    'background-image':
+      'url(assets/img/thumbnail/' + prompt.categories[0].id + '.jpg)'
+  }"
+>
+  <div class="card-body">
+    <strong class="card-category">
+      <i class="fa fa-newspaper-o"></i> {{ prompt.categories[0].itemName }}
+    </strong>
+    <h4 class="card-title">{{ prompt.name }}</h4>
+    <h5 class="card-title">プロンプト</h5>
+    <div class="card-footer">
+      <div class="author">
+        <img
+          class="avatar img-raised"
+          alt="30x30"
+          [src]="
+            prompt.user.image
+              ? prompt.user.image
+              : prompt.user.prompts.length < 1
+              ? './assets/icons/1.png'
+              : prompt.user.prompts.length < 5
+              ? './assets/icons/2.png'
+              : prompt.user.prompts.length < 12
+              ? './assets/icons/3.png'
+              : prompt.user.prompts.length < 20
+              ? './assets/icons/4.png'
+              : './assets/icons/5.png'
+          "
+        />
+        <span>{{ prompt.user.name }}</span>
+      </div>
+      <br />
+      <div class="stats" *ngIf="prompt.comments && prompt.comments.length > 0">
+        <i class="nc-icon nc-chat-33"></i>&nbsp; {{ prompt.comments.length }}
+      </div>
+      <div
+        class="stats"
+        *ngIf="prompt.isBookmarkedFrom && prompt.isBookmarkedFrom.length > 0"
+      >
+        <i class="nc-icon nc-favourite-28"></i>&nbsp;
+        {{ prompt.isBookmarkedFrom.length }}
+      </div>
+    </div>
+  </div>
+</a>
