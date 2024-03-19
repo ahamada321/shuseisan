@@ -1,0 +1,8 @@
+.row {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
+.card {
+  min-width: 260px; // For Price card height.
+}

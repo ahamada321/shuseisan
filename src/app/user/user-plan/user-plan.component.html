@@ -2,5 +2,277 @@
 <div class="section">
   <div class="container text-center">
     <h1>プランを選択</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="choose-plan">
+          <ul
+            ngbNav
+            #nav="ngbNav"
+            [(activeId)]="activeTab1"
+            type="pills"
+            class="nav nav-pills nav-pills-primary justify-content-center"
+          >
+            <li class="nav-item" [ngbNavItem]="1">
+              <a class="nav-link" ngbNavLink> 月々プラン</a>
+              <ng-template ngbNavContent>
+                <div class="space-top"></div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="card card-pricing">
+                      <div class="card-body">
+                        <h6 class="card-category">無料プラン</h6>
+                        <h1 class="card-title">0円/ずっと</h1>
+                        <ul>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1日に<b>3回</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1回につき<b>800文字まで</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-times" aria-hidden="true"></i
+                            >広告表示非表示
+                          </li>
+                        </ul>
+                        <button
+                          [disabled]="true"
+                          class="btn btn-outline-default btn-round"
+                        >
+                          選択中
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card card-pricing" data-color="orange">
+                      <div class="card-body">
+                        <h6 class="card-category text-success">満足プラン</h6>
+                        <h1 class="card-title">980円/月</h1>
+                        <ul>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1日に<b>30回</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1回につき<b>800文字まで</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >広告非表示
+                          </li>
+                        </ul>
+                        <a
+                          href="javascript:void(0)"
+                          class="btn btn-neutral btn-round"
+                          >始める</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card card-pricing">
+                      <div class="card-body">
+                        <h6 class="card-category text-primary">大満足プラン</h6>
+                        <h1 class="card-title">2980円/月</h1>
+                        <ul>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1日に<b>80回</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1回につき<b>3600文字まで</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >広告非表示
+                          </li>
+                        </ul>
+                        <a
+                          href="javascript:void(0)"
+                          class="btn btn-primary btn-round"
+                          >始める</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li class="nav-item" [ngbNavItem]="2">
+              <a class="nav-link" ngbNavLink> 年割プラン</a>
+              <ng-template ngbNavContent>
+                <div class="space-top"></div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="card card-pricing">
+                      <div class="card-body">
+                        <h6 class="card-category">無料プラン</h6>
+                        <h1 class="card-title">0円/ずっと</h1>
+                        <ul>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1日に<b>3回</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1回につき<b>800文字まで</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-times" aria-hidden="true"></i
+                            >広告表示非表示
+                          </li>
+                        </ul>
+                        <button
+                          [disabled]="true"
+                          class="btn btn-outline-default btn-round"
+                        >
+                          選択中
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card card-pricing" data-color="orange">
+                      <div class="card-body">
+                        <h6 class="card-category text-success">満足プラン</h6>
+                        <h1 class="card-title">980円/月</h1>
+                        <ul>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1日に<b>30回</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1回につき<b>800文字まで</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >広告非表示
+                          </li>
+                        </ul>
+                        <a
+                          href="javascript:void(0)"
+                          class="btn btn-neutral btn-round"
+                          >始める</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card card-pricing">
+                      <div class="card-body">
+                        <h6 class="card-category text-primary">大満足プラン</h6>
+                        <h1 class="card-title">2980円/月</h1>
+                        <ul>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1日に<b>80回</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >1回につき<b>3600文字まで</b>修正
+                          </li>
+                          <li>
+                            <i class="fa fa-check" aria-hidden="true"></i
+                            >広告非表示
+                          </li>
+                        </ul>
+                        <a
+                          href="javascript:void(0)"
+                          class="btn btn-primary btn-round"
+                          >始める</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-7 ml-auto">
+          <div class="tab-content text-center" >
+              <div class="tab-pane active" id="personal" role="tabpanel">
+                  <div class="space-top"></div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="card card-pricing">
+                              <div class="card-body">
+                                  <h6 class="card-category text-primary">HTML Package</h6>
+                                  <h1 class="card-title">$0</h1>
+                                  <ul>
+                                      <li><b>1</b> Developer</li>
+                                      <li><b>99+</b> Components</li>
+                                      <li><b>HTML</b> Elements</li>
+                                      <li><b>14</b> Page Examples</li>
+                                  </ul>
+                                  <a href="javascript:void(0)" class="btn btn-primary btn-round">Free download</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="card card-pricing" data-color="orange">
+                              <div class="card-body">
+                                  <h6 class="card-category text-success">HTML Package</h6>
+                                  <h1 class="card-title">$59</h1>
+                                  <ul>
+                                      <li><b>5</b> Developer</li>
+                                      <li><b>129+</b> Components</li>
+                                      <li><b>HTML</b> Elements</li>
+                                      <li><b>24</b> Page Examples</li>
+                                  </ul>
+                                  <a href="javascript:void(0)" class="btn btn-neutral btn-round">Free download</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="tab-pane" id="commercial" role="tabpanel">
+                  <div class="space-top"></div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="card card-pricing">
+                              <div class="card-body">
+                                  <h6 class="card-category text-warning">HTML Package</h6>
+                                  <h1 class="card-title">$159</h1>
+                                  <ul>
+                                      <li><b>5+</b> Developers</li>
+                                      <li><b>199+</b> Components</li>
+                                      <li><b>HTML</b> Elements</li>
+                                      <li><b>34</b> Page Examples</li>
+                                  </ul>
+                                  <a href="javascript:void(0)" class="btn btn-warning btn-round">Buy Now !</a>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                          <div class="card card-pricing" data-color="orange">
+                              <div class="card-body">
+                                  <h6 class="card-category text-success">HTML Package</h6>
+                                  <h1 class="card-title">$359</h1>
+                                  <ul>
+                                      <li><b>15</b> Developer</li>
+                                      <li><b>229+</b> Components</li>
+                                      <li><b>HTML</b> Elements</li>
+                                      <li><b>44</b> Page Examples</li>
+                                  </ul>
+                                  <a href="javascript:void(0)" class="btn btn-neutral btn-round">Free download</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+    </div>
   </div>
 </div>

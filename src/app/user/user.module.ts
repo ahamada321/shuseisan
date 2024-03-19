@@ -30,6 +30,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     UserComponent,
+    UserPlanComponent,
     UserSettingsComponent,
     UserSettingsPasswordComponent,
   ],
