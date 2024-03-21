@@ -1,134 +1,52 @@
-<div class="wrapper">
-  <div
-    class="page-header page-header-xs settings-background"
-    style="background-image: url('./assets/img/bg/tressure-map.jpg')"
-  >
-    <div class="filter"></div>
-    <div class="content-center">
-      <div class="container">
-        <div class="space-top"></div>
-        <h1 class="title">アカウント設定</h1>
-        <h5 class="description">Account Settings</h5>
-      </div>
-    </div>
-  </div>
-  <div class="profile-content section section-nude">
-    <div class="container" *ngIf="userData">
-      <div class="row">
-        <div class="col-md-6 ml-auto mr-auto">
-          <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
-            <p *ngFor="let error of errors">{{ error.detail }}</p>
-          </div>
-          <form
-            class="settings-form"
-            #userForm="ngForm"
-            (ngSubmit)="updateUser(userForm)"
+<div class="section">
+  <div class="container" *ngIf="userData">
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+          <p *ngFor="let error of errors">{{ error.detail }}</p>
+        </div>
+        <div class="space-50"></div>
+        <h3>{{ userData.name }}さんのマイページ</h3>
+        <form
+          class="settings-form"
+          #userForm="ngForm"
+          (ngSubmit)="updateUser(userForm)"
+        >
+          <p>現在のプラン</p>
+          <div
+            class="card"
+            data-background="image"
+            Style="
+                background-image:url(assets/img/thumbnail/3.jpg)
+              "
           >
-            <div class="form-group">
-              <label>名前 <span class="icon-danger">*</span></label>
-              <input
-                type="text"
-                class="form-control border-input"
-                placeholder="あなたの名前（必須）"
-                [(ngModel)]="userData.name"
-                name="name"
-                maxlength="30"
-                required
-              />
-              <h5>
-                <small
-                  ><span id="textarea-limited-message" class="pull-right">
-                    <div *ngIf="!userData.name">残文字数 30</div>
-                    <div *ngIf="userData.name">
-                      残文字数 {{ 30 - userData.name.length }}
-                    </div>
-                  </span></small
-                >
-              </h5>
+            <div class="card-body">
+              <h4 class="card-title">満足プラン</h4>
             </div>
+          </div>
+          <div class="text-center">
+            <a
+              [routerLink]="['/plan']"
+              class="btn btn-outline-success btn-lg btn-wd"
+            >
+              プランを変更する
+            </a>
+          </div>
+          <div class="space-top"></div>
 
-            <div class="form-group">
-              <label>Email <span class="icon-danger">*</span></label>
-              <input
-                type="text"
-                class="form-control border-input"
-                placeholder="メールアドレス"
-                [ngModel]="userData.email"
-                name="email"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label>自己紹介</label>
-              <textarea
-                type="text"
-                class="form-control textarea-limited"
-                placeholder="自分の魅力をPRすることができます。"
-                [(ngModel)]="userData.description"
-                name="description"
-                rows="10"
-                maxlength="2000"
-              ></textarea>
-              <h5>
-                <small
-                  ><span id="textarea-limited-message" class="pull-right">
-                    <div *ngIf="!userData.description">残文字数 2000</div>
-                    <div *ngIf="userData.description">
-                      残文字数 {{ 2000 - userData.description.length }}
-                    </div>
-                  </span></small
-                >
-              </h5>
-            </div>
-
-            <div class="form-group">
-              <label>パスワード変更</label>
-              <div>
-                <a
-                  class="btn btn-primary btn-link"
-                  [routerLink]="['/user/password']"
-                >
-                  パスワードを変更する
-                </a>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>ホームページURL</label>
-              <input
-                type="text"
-                class="form-control border-input"
-                placeholder="https://www.○○○○.com"
-                [(ngModel)]="userData.homepage"
-                name="homepage"
-              />
-            </div>
-
-            <div class="form-group">
-              <label>Twitter ID</label>
-              <div
-                class="input-group"
-                [ngClass]="{ 'input-group-focus': focus1 === true }"
+          <div class="form-group">
+            <label>パスワード変更</label>
+            <div>
+              <a
+                class="btn btn-success btn-link"
+                [routerLink]="['/user/password']"
               >
-                <div class="input-group-prepend">
-                  <span class="input-group-text"
-                    ><i class="fa fa-twitter"></i
-                  ></span>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="userData.twitter"
-                  name="twitter"
-                  placeholder="Twitter ID（@は不要）"
-                  (focus)="focus1 = true"
-                  (blur)="focus1 = false"
-                />
-              </div>
+                パスワードを変更する
+              </a>
             </div>
+          </div>
 
-            <!-- <div class="space-top"></div>
+          <!-- <div class="space-top"></div>
             <label>通知</label>
             <ul class="notifications">
               <li class="notification-item">
@@ -141,24 +59,14 @@
                 ></bSwitch>
               </li>
             </ul> -->
-            <div class="space-top"></div>
-            <div class="text-center">
-              <button
-                [disabled]="!(userForm.valid && userForm.dirty && !isClicked)"
-                type="submit"
-                class="btn btn-primary btn-lg btn-round btn-wd"
-              >
-                更新する
-              </button>
-            </div>
-          </form>
-        </div>
+          <div class="space-top"></div>
+        </form>
       </div>
-      <div class="text-center">
-        <button class="btn btn-primary btn-link" (click)="logout()">
-          ログアウトする
-        </button>
-      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-success btn-link" (click)="logout()">
+        ログアウトする
+      </button>
     </div>
   </div>
 </div>
