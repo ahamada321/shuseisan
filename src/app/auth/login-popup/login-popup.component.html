@@ -37,7 +37,7 @@
     <button
       [disabled]="!loginForm.valid || isClicked"
       type="submit"
-      class="btn btn-block btn-round btn-primary"
+      class="btn btn-block btn-success"
     >
       ログイン
     </button>
@@ -47,14 +47,14 @@
   <a
     [routerLink]="['/login/reset']"
     (click)="activeModal.close('Close click')"
-    class="btn btn-link btn-primary"
+    class="btn btn-link btn-success"
     >パスワードをお忘れですか？</a
   >
   <a
     [routerLink]="['/register']"
     [queryParams]="{ promptId }"
     (click)="activeModal.close('Close click')"
-    class="btn btn-link btn-primary"
-    >無料会員登録はこちら</a
+    class="btn btn-link btn-success"
+    >会員登録はこちら</a
   >
 </div>

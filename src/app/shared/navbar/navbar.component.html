@@ -6,6 +6,7 @@
           <img src="assets/img/logo/logo.svg" alt="..." />
         </a>
       </div>
+
       <button
         class="navbar-toggler navbar-burger"
         type="button"
@@ -27,19 +28,12 @@
           <li class="nav-item clickable">
             <a class="nav-link" [routerLink]="['/blog/tutorial']"
               ><i class="nc-icon x2 nc-alert-circle-i"></i>&nbsp;
-              初めての使い方ガイド</a
+              修正さんの使い方ガイド</a
             >
           </li>
-          <li class="nav-item clickable">
-            <a class="nav-link" [routerLink]="['/register']"
-              ><i class="nc-icon x2 nc-single-02"></i>&nbsp; 新規会員登録する</a
-            >
-          </li>
+
           <li class="nav-item">
-            <button
-              class="btn btn-primary btn-round"
-              (click)="modalLoginOpen()"
-            >
+            <button class="btn btn-success" (click)="modalLoginOpen()">
               <i class="nc-icon nc-lock-circle-open"></i>&nbsp; ログインする
             </button>
           </li>
@@ -47,20 +41,20 @@
         <ng-container *ngIf="auth.isAuthenticated()">
           <li class="nav-item clickable">
             <a class="nav-link" [routerLink]="['/']"
-              ><i class="nc-icon x2 nc-zoom-split"></i>&nbsp;
-              探しに行く（トップへ）</a
+              ><i class="nc-icon x2 nc-check-2"></i>&nbsp;
+              修正しに行く（トップへ）</a
             >
           </li>
           <li class="nav-item clickable">
             <a class="nav-link" [routerLink]="['/user']"
-              ><i class="nc-icon x2 nc-book-bookmark"></i>&nbsp; マイページ</a
+              ><i class="nc-icon x2 nc-circle-10"></i>&nbsp; マイページ</a
             >
           </li>
-          <li class="nav-item clickable">
+          <!-- <li class="nav-item clickable">
             <a class="nav-link" [routerLink]="['/user/settings']"
               ><i class="nc-icon x2 nc-circle-10"></i>&nbsp; アカウント設定</a
             >
-          </li>
+          </li> -->
         </ng-container>
       </ul>
     </div>
