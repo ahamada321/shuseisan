@@ -15,7 +15,7 @@ export class PromptListComponent implements OnInit {
   result: string = '';
   isClicked: boolean = false;
   errors: any;
-
+  count: number = 3;
   constructor(
     private titleService: Title,
     private meta: Meta,

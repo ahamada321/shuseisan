@@ -10,7 +10,7 @@
             #nav="ngbNav"
             [(activeId)]="activeTab1"
             type="pills"
-            class="nav nav-pills nav-pills-primary justify-content-center"
+            class="nav nav-pills nav-pills-success justify-content-center"
           >
             <li class="nav-item" [ngbNavItem]="1">
               <a class="nav-link" ngbNavLink> 月々プラン</a>
@@ -46,7 +46,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="card card-pricing" data-color="orange">
+                    <div class="card card-pricing" data-color="green">
                       <div class="card-body">
                         <h6 class="card-category text-success">満足プラン</h6>
                         <h1 class="card-title">980円/月</h1>
@@ -75,7 +75,7 @@
                   <div class="col-md-4">
                     <div class="card card-pricing">
                       <div class="card-body">
-                        <h6 class="card-category text-primary">大満足プラン</h6>
+                        <h6 class="card-category text-success">大満足プラン</h6>
                         <h1 class="card-title">2980円/月</h1>
                         <ul>
                           <li>
@@ -93,7 +93,7 @@
                         </ul>
                         <a
                           href="javascript:void(0)"
-                          class="btn btn-primary btn-round"
+                          class="btn btn-success btn-round"
                           >始める</a
                         >
                       </div>
@@ -136,10 +136,12 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="card card-pricing" data-color="orange">
+                    <div class="card card-pricing" data-color="green">
                       <div class="card-body">
                         <h6 class="card-category text-success">満足プラン</h6>
-                        <h1 class="card-title">980円/月</h1>
+                        <h1 class="card-title">
+                          <s>980円/月</s><br />→780円/月
+                        </h1>
                         <ul>
                           <li>
                             <i class="fa fa-check" aria-hidden="true"></i
@@ -165,8 +167,10 @@
                   <div class="col-md-4">
                     <div class="card card-pricing">
                       <div class="card-body">
-                        <h6 class="card-category text-primary">大満足プラン</h6>
-                        <h1 class="card-title">2980円/月</h1>
+                        <h6 class="card-category text-success">大満足プラン</h6>
+                        <h1 class="card-title">
+                          <s>2980円/月</s><br />→2480円/月
+                        </h1>
                         <ul>
                           <li>
                             <i class="fa fa-check" aria-hidden="true"></i
@@ -183,7 +187,7 @@
                         </ul>
                         <a
                           href="javascript:void(0)"
-                          class="btn btn-primary btn-round"
+                          class="btn btn-success btn-round"
                           >始める</a
                         >
                       </div>
