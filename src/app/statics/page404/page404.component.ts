@@ -10,8 +10,6 @@ export class Page404Component implements OnInit {
   constructor(private titleService: Title) {}
 
   ngOnInit() {
-    var navbar = document.getElementsByTagName('nav')[0];
-    navbar.classList.add('navbar-transparent');
     this.updateTitle();
   }
 
