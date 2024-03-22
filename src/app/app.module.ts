@@ -30,7 +30,7 @@ import { BottomNavComponent } from './shared/bottom-nav/bottom-nav.component';
     }),
     AppRoutingModule,
   ],
-  providers: [{ provide: 'googleTagManagerId', useValue: 'G-QQVD3FTV9V' }],
+  providers: [{ provide: 'googleTagManagerId', useValue: 'G-ED11D11PHZ' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
