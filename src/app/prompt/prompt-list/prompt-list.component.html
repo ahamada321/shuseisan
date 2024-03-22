@@ -10,7 +10,7 @@
           <p *ngFor="let error of errors">{{ error.detail }}</p>
         </div>
 
-        <form class="settings-form" #textForm="ngForm" (ngSubmit)="onClick()">
+        <form #textForm="ngForm" (ngSubmit)="onClick()">
           <div class="form-group">
             <h3 class="title">修正してほしい文章</h3>
             <textarea
