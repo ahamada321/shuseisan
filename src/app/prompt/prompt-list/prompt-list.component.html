@@ -10,11 +10,7 @@
           <p *ngFor="let error of errors">{{ error.detail }}</p>
         </div>
 
-        <form
-          class="settings-form"
-          #textForm="ngForm"
-          (ngSubmit)="sendText(textForm)"
-        >
+        <form class="settings-form" #textForm="ngForm">
           <div class="form-group">
             <h3 class="title">修正してほしい文章</h3>
             <textarea
@@ -61,6 +57,7 @@
             >
               <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
             </button>
+            <br />
             <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
               修正回数をもっと増やしたい方はこちら
             </a>
