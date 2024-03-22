@@ -30,9 +30,9 @@
           </div>
 
           <div *ngIf="clicks < 3" class="text-center">
-            <h4 class="description">
+            <h3 class="description">
               本日はあと{{ 3 - clicks }}回無料で修正できます
-            </h4>
+            </h3>
             <button
               [disabled]="!(text && !isClicked)"
               type="submit"
@@ -46,9 +46,9 @@
             </a>
           </div>
           <div *ngIf="count > 3" class="text-center">
-            <h4 class="description">
+            <h3 class="description">
               本日はあと{{ 30 - count }}回修正できます
-            </h4>
+            </h3>
             <button
               [disabled]="!(text && !isClicked)"
               type="submit"
@@ -63,7 +63,7 @@
           </div>
         </form>
         <div *ngIf="clicks === 3" class="text-center">
-          <h4 class="description">本日の無料修正回数を使い切りました</h4>
+          <h3 class="description">本日の無料修正回数を使い切りました</h3>
           <a [routerLink]="['/plan']" class="btn btn-success btn-lg btn-wd">
             <i class="nc-icon nc-button-play"></i>&nbsp;プランを変更する
           </a>
@@ -85,6 +85,7 @@
         <div class="text-center">
           <button
             *ngIf="!isCopied"
+            [disabled]="!result"
             class="btn btn-success btn-lg btn-wd"
             (click)="copyResult(); isCopied = true"
           >
