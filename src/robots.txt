@@ -1,6 +1,6 @@
 # Allow all URLs (see https://www.robotstxt.org/robotstxt.html)
 User-agent: *
-Allow: /
+Disallow:
 
 # Sitemap
 Sitemap: https://www.shuseisan.com/sitemap.xml
