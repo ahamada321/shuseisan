@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class ClickService {
   private clicks: number = 0;
   private maxClicks: number = 3;
-  private expiryTime: number = 24 * 60 * 60 * 1000; // 24時間
+  private expiryTime: number = 12 * 60 * 60 * 1000; // 12時間
 
   constructor(private http: HttpClient) {}
 
