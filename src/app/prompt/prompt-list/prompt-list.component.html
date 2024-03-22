@@ -12,7 +12,7 @@
 
         <form #textForm="ngForm" (ngSubmit)="onClick()">
           <div class="form-group">
-            <h3 class="title">修正してほしい文章</h3>
+            <h2 class="title">修正してほしい文章</h2>
             <textarea
               type="text"
               class="form-control textarea-limited"
@@ -26,9 +26,9 @@
               <div *ngIf="!text">残文字数 300</div>
               <div *ngIf="text">残文字数 {{ 300 - text.length }}</div>
             </span>
+            <br />
           </div>
 
-          <div class="space-top"></div>
           <div *ngIf="clicks < 3" class="text-center">
             <h4 class="description">
               本日はあと{{ 3 - clicks }}回無料で修正できます
@@ -42,7 +42,7 @@
             </button>
             <br />
             <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
-              広告非表示で回数も気にせず使いたい方
+              広告非表示で何回も使いたい方
             </a>
           </div>
           <div *ngIf="count > 3" class="text-center">
@@ -71,7 +71,7 @@
 
         <div class="space-top"></div>
         <div class="form-group">
-          <h3 class="title">修正された文章</h3>
+          <h2 class="title">修正された文章</h2>
           <textarea
             type="text"
             class="form-control textarea-limited"
@@ -103,12 +103,12 @@
   </div>
   <div class="space-50"></div>
   <div class="text-center">
-    <h4 class="description">修正さんを他の人にも教えてあげてね</h4>
-    <button class="btn btn-round btn-twitter mr-1" (click)="shareTwitter()">
+    <h3 class="description">他の人にも教えてあげてね</h3>
+    <button class="btn btn-round btn-twitter" (click)="shareTwitter()">
       <i class="fa fa-twitter fa-lg"></i> Twitterで友達に教える
     </button>
-    <button class="btn btn-round btn-facebook">
+    <!-- <button class="btn btn-round btn-facebook">
       <i class="fa fa-facebook-square fa-lg"></i> Facebookで友達に教える
-    </button>
+    </button> -->
   </div>
 </div>
