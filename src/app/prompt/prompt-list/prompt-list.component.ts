@@ -17,6 +17,7 @@ export class PromptListComponent implements OnInit {
   text: string = '';
   result: string = '';
   isClicked: boolean = false;
+  isCopied: boolean = false;
   errors: any;
   count: number = 0;
   clicks: number = 0;
@@ -68,10 +69,8 @@ export class PromptListComponent implements OnInit {
       this.promptService.postPrompt({ prompt: this.text }).subscribe(
         (result) => {
           this.result = result.text;
-          debugger;
         },
         (err) => {
-          debugger;
           console.error(err);
         }
       );
@@ -83,6 +82,11 @@ export class PromptListComponent implements OnInit {
   }
 
   sendText(textForm: any) {}
+
+  copyResult() {
+    // ここでクリップボードにコピーするロジックを実装
+    navigator.clipboard.writeText(this.result);
+  }
 
   shareTwitter() {
     const URL =
