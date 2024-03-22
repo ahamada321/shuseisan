@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { ClickService } from '../shared/click.service';
 import { Router } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
 import { PromptService } from '../shared/prompt.service';
 
 @Component({
@@ -23,8 +22,6 @@ export class PromptListComponent implements OnInit {
   clicks: number = 0;
 
   constructor(
-    private titleService: Title,
-    private meta: Meta,
     private router: Router,
     public auth: MyOriginAuthService,
     private clickService: ClickService,
@@ -33,27 +30,11 @@ export class PromptListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.updateTitleAndMeta();
     if (this.clickService.isExpired()) {
       this.clickService.updateLastClickTime();
     } else {
       this.clicks = this.clickService.getClicks();
     }
-  }
-
-  updateTitleAndMeta() {
-    this.titleService.setTitle(
-      'チャットGPTで時短！コピペで使える便利なテンプレート集 | 修正さん'
-    );
-
-    this.meta.updateTag({
-      name: 'description',
-      content: this.description,
-    });
-    this.meta.updateTag({
-      property: 'og:description',
-      content: this.description,
-    });
   }
 
   onClick() {
@@ -65,7 +46,7 @@ export class PromptListComponent implements OnInit {
       this.clickService.incrementClick();
       this.clicks = this.clickService.getClicks();
       this.clickService.updateLastClickTime();
-      console.log('Click incremented');
+
       this.promptService.postPrompt({ prompt: this.text }).subscribe(
         (result) => {
           this.result = result.text;
@@ -80,8 +61,6 @@ export class PromptListComponent implements OnInit {
       this.isClicked = false;
     }
   }
-
-  sendText(textForm: any) {}
 
   copyResult() {
     // ここでクリップボードにコピーするロジックを実装
