@@ -10,7 +10,7 @@
           <p *ngFor="let error of errors">{{ error.detail }}</p>
         </div>
 
-        <form class="settings-form" #textForm="ngForm">
+        <form class="settings-form" #textForm="ngForm" (ngSubmit)="onClick()">
           <div class="form-group">
             <h3 class="title">修正してほしい文章</h3>
             <textarea
@@ -37,7 +37,6 @@
               [disabled]="!(text && !isClicked)"
               type="submit"
               class="btn btn-success btn-lg btn-wd"
-              (click)="onClick()"
             >
               <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
             </button>
