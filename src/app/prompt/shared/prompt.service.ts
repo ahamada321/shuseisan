@@ -34,8 +34,8 @@ export class PromptService {
     );
   }
 
-  public createPrompt(promptData: Prompt): Observable<any> {
-    return this.http.post('/api/v1/prompts/create', promptData);
+  public postPrompt(promptData: Prompt): Observable<any> {
+    return this.http.post('/api/v1/prompts', promptData);
   }
 
   public deletePrompt(promptId: string): Observable<any> {

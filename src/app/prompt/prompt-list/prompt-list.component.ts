@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { ClickService } from '../shared/click.service';
 import { Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { PromptService } from '../shared/prompt.service';
 
 @Component({
   selector: 'app-prompt-list',
@@ -24,7 +26,9 @@ export class PromptListComponent implements OnInit {
     private meta: Meta,
     private router: Router,
     public auth: MyOriginAuthService,
-    private clickService: ClickService
+    private clickService: ClickService,
+    private location: Location,
+    private promptService: PromptService
   ) {}
 
   ngOnInit() {
@@ -61,6 +65,16 @@ export class PromptListComponent implements OnInit {
       this.clicks = this.clickService.getClicks();
       this.clickService.updateLastClickTime();
       console.log('Click incremented');
+      this.promptService.postPrompt({ prompt: this.text }).subscribe(
+        (result) => {
+          this.result = result.text;
+          debugger;
+        },
+        (err) => {
+          debugger;
+          console.error(err);
+        }
+      );
       this.isClicked = false;
     } else {
       console.log('Exceeded maximum clicks or expired');
@@ -69,4 +83,18 @@ export class PromptListComponent implements OnInit {
   }
 
   sendText(textForm: any) {}
+
+  shareTwitter() {
+    const URL =
+      'https://twitter.com/intent/tweet?url=https://www.copy-prompt.com';
+    const PATH = this.location.path();
+    window.open(
+      URL +
+        PATH +
+        '&text=%0A' +
+        '文章を簡単に整えてくれる修正さん' +
+        '&hashtags=修正さん',
+      '_blank'
+    );
+  }
 }

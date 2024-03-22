@@ -8,17 +8,9 @@ const PromptCtrl = require("./controllers/prompt");
 //   res.json({ secret: true });
 // });
 
-router.get("/manage", UserCtrl.authMiddleware, PromptCtrl.getMyPrompts);
-
-router.get("/random", PromptCtrl.getRandomPrompts);
-
-router.get("/ranking", PromptCtrl.getPromptRanking);
-
-router.get("/:id", PromptCtrl.getPromptById);
-
 router.get("", PromptCtrl.getPrompts);
 
-router.post("/create", UserCtrl.authMiddleware, PromptCtrl.createPrompt);
+router.post("", PromptCtrl.postPrompt);
 
 router.patch("/:id", UserCtrl.authMiddleware, PromptCtrl.updatePrompt);
 

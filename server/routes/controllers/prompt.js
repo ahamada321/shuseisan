@@ -1,121 +1,10 @@
 const Prompt = require("./models/prompt");
 const SearchHistory = require("./models/searchhistory");
 const User = require("./models/user");
+const config = require("../../config");
 const { normalizeErrors } = require("./helpers/mongoose");
-
-exports.getPromptById = async function (req, res) {
-  const promptId = req.params.id;
-
-  try {
-    const foundPrompt = await Prompt.findById(promptId)
-      .populate("user", "-email -password")
-      .populate({
-        path: "comments",
-        populate: { path: "user", select: "-email -password" },
-        options: { sort: { createdAt: -1 } },
-      });
-
-    return res.json(foundPrompt);
-  } catch (err) {
-    if (err) {
-      return res.status(422).send({
-        errors: {
-          title: "Prompt error!",
-          detail: "Could not find Prompt!",
-        },
-      });
-    }
-  }
-};
-
-exports.getRandomPrompts = async function (req, res) {
-  try {
-    const result = await Prompt.aggregate([
-      { $match: { isShared: true } },
-      { $sample: { size: 4 } },
-      {
-        $lookup: {
-          from: "users", // 結合するコレクション
-          localField: "user", // rentalsコレクションのフィールド
-          foreignField: "_id", // usersコレクションのフィールド
-          as: "user", // 結果を格納するフィールド名
-          pipeline: [
-            {
-              $project: {
-                email: 0,
-                password: 0, // パスワードフィールドを除外
-              },
-            },
-          ],
-        },
-      },
-      {
-        $unwind: "$user",
-      },
-    ]);
-    return res.json(result);
-  } catch (err) {
-    return res.status(422).send({ errors: normalizeErrors(err.errors) });
-  }
-};
-
-exports.getPromptRanking = async function (req, res) {
-  const { page, limit } = req.query;
-
-  if (!page || !limit) {
-    return res.status(422).send({
-      errors: [
-        {
-          title: "Data missing!",
-          detail: "ページリミット情報が取得できませんでした。",
-        },
-      ],
-    });
-  }
-
-  try {
-    const result = await Prompt.aggregate([
-      { $match: { isShared: true } },
-      {
-        $addFields: {
-          arraySize: { $size: { $ifNull: ["$isBookmarkedFrom", []] } },
-        },
-      },
-      { $sort: { arraySize: -1 } },
-      {
-        $lookup: {
-          from: "users", // 結合するコレクション
-          localField: "user", // rentalsコレクションのフィールド
-          foreignField: "_id", // usersコレクションのフィールド
-          as: "user", // 結果を格納するフィールド名
-          pipeline: [
-            {
-              $project: {
-                email: 0,
-                password: 0, // パスワードフィールドを除外
-              },
-            },
-          ],
-        },
-      },
-      {
-        $unwind: "$user",
-      },
-      {
-        $facet: {
-          metadata: [{ $count: "total" }, { $addFields: { page: page } }],
-          foundPrompts: [
-            { $skip: (page - 1) * limit },
-            { $limit: Number(limit) },
-          ],
-        },
-      },
-    ]);
-    return res.json(result);
-  } catch (err) {
-    return res.status(422).send({ errors: normalizeErrors(err.errors) });
-  }
-};
+const { Anthropic } = require("@anthropic-ai/sdk");
+const anthropic = new Anthropic({ apiKey: config.CLAUDE_API_KEY });
 
 exports.getPrompts = async function (req, res) {
   const { keywords, page, limit } = req.query;
@@ -227,41 +116,6 @@ exports.getPrompts = async function (req, res) {
   }
 };
 
-exports.getMyPrompts = async function (req, res) {
-  const user = res.locals.user;
-  const { page, limit } = req.query;
-
-  if (!page || !limit) {
-    return res.status(422).send({
-      errors: [
-        {
-          title: "Data missing!",
-          detail: "ページリミット情報が取得できませんでした。",
-        },
-      ],
-    });
-  }
-
-  try {
-    const result = await Prompt.aggregate([
-      { $match: { user: user._id } },
-      { $sort: { updatedAt: -1 } },
-      {
-        $facet: {
-          metadata: [{ $count: "total" }, { $addFields: { page: page } }],
-          foundPrompts: [
-            { $skip: (page - 1) * limit },
-            { $limit: Number(limit) },
-          ],
-        },
-      },
-    ]);
-    return res.json(result);
-  } catch (err) {
-    return res.status(422).send({ errors: normalizeErrors(err.errors) });
-  }
-};
-
 exports.deletePrompt = async function (req, res) {
   const promptId = req.params.id;
   const user = res.locals.user;
@@ -322,16 +176,19 @@ exports.updatePrompt = async function (req, res) {
   }
 };
 
-exports.createPrompt = async function (req, res) {
-  const promptData = new Prompt(req.body);
-  const user = res.locals.user;
-  promptData.user = user;
+exports.postPrompt = async function (req, res) {
+  const content =
+    "以下の文章を正しい日本語に整え文章のみ出力してください\n" +
+    req.body.prompt;
 
   try {
-    const newPrompt = await Prompt.create(promptData);
-    await User.updateOne({ _id: user.id }, { $push: { prompts: newPrompt } });
-    return res.json({ status: "created" });
+    const msg = await anthropic.messages.create({
+      max_tokens: 110, // 1 token = 3文字
+      messages: [{ role: "user", content }],
+      model: "claude-3-haiku-20240307",
+    });
+    return res.json(msg.content[0]);
   } catch (err) {
-    return res.status(422).send({ errors: normalizeErrors(err.errors) });
+    return res.status(422).send(err);
   }
 };
