@@ -1,0 +1,20 @@
+h1 {
+  font-size: 2.4em;
+}
+
+h2.title {
+  margin-bottom: 10px;
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+}
+.card-big-shadow {
+  max-width: 800px;
+  position: relative;
+}
+.card.card-just-text .card-body {
+  padding: 15px 10px;
+  text-align: center;
+}

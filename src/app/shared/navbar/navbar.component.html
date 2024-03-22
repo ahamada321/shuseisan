@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top nav-down" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <div class="navbar-translate">
       <div class="navbar-header">
@@ -26,7 +26,7 @@
       <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="!auth.isAuthenticated()">
           <li class="nav-item clickable">
-            <a class="nav-link" [routerLink]="['/blog/tutorial']"
+            <a class="nav-link" [routerLink]="['/tutorial']"
               ><i class="nc-icon x2 nc-alert-circle-i"></i>&nbsp;
               修正さんの使い方ガイド</a
             >
