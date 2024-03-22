@@ -40,14 +40,15 @@
 
           <div class="space-top"></div>
 
-          <div *ngIf="count < 3" class="text-center">
+          <div *ngIf="clicks < 3" class="text-center">
             <h4 class="description">
-              本日はあと{{ 3 - count }}回無料で修正できます
+              本日はあと{{ 3 - clicks }}回無料で修正できます
             </h4>
             <button
               [disabled]="!(textForm.valid && textForm.dirty && !isClicked)"
               type="submit"
               class="btn btn-success btn-lg btn-wd"
+              (click)="onClick()"
             >
               <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
             </button>
@@ -61,7 +62,7 @@
               </a>
             </div>
           </div>
-          <div *ngIf="count === 3" class="text-center">
+          <div *ngIf="clicks === 3" class="text-center">
             <h4 class="description">本日の無料修正回数を使い切りました</h4>
             <button
               [routerLink]="['/plan']"
