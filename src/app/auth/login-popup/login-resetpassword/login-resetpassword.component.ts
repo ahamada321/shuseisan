@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyOriginAuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './login-resetpassword.component.html',
   styleUrls: ['./login-resetpassword.component.scss'],
 })
-export class LoginResetpasswordComponent implements OnInit, OnDestroy {
+export class LoginResetpasswordComponent implements OnInit {
   focus!: boolean;
   loginForm!: FormGroup;
   isClicked!: boolean;
@@ -22,14 +22,7 @@ export class LoginResetpasswordComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    let navbar = document.getElementsByTagName('nav')[0];
-    navbar.classList.add('navbar-transparent');
     this.initForm();
-  }
-
-  ngOnDestroy() {
-    let navbar = document.getElementsByTagName('nav')[0];
-    navbar.classList.remove('navbar-transparent');
   }
 
   initForm() {
