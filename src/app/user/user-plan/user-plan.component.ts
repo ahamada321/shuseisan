@@ -13,7 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class UserPlanComponent implements OnInit, OnDestroy {
   focus1 = false;
-
+  activeTab = 1;
+  activeTab1 = 1;
   isClicked: boolean = false;
   errors: any[] = [];
 

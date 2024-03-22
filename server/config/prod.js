@@ -2,6 +2,7 @@ module.exports = {
   DB_URI: process.env.DB_URI,
   SECRET: process.env.SECRET,
 
+  CLAUDE_API_KEY: process.env.CLAUDE_API_KEY,
   ML_API_KEY: process.env.ML_API_KEY,
   SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
 

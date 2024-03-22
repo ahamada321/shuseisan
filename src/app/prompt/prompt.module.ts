@@ -11,6 +11,7 @@ import { PromptListComponent } from './prompt-list/prompt-list.component';
 
 import { QuillModule } from 'ngx-quill';
 import { PromptService } from './shared/prompt.service';
+import { ClickService } from './shared/click.service';
 
 const routes: Routes = [
   { path: '', component: PromptListComponent },
@@ -41,6 +42,6 @@ const routes: Routes = [
     CarouselModule,
     QuillModule,
   ],
-  providers: [PromptService],
+  providers: [PromptService, ClickService],
 })
 export class PromptModule {}
