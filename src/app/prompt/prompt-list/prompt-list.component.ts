@@ -50,12 +50,13 @@ export class PromptListComponent implements OnInit {
       this.promptService.postPrompt({ prompt: this.text }).subscribe(
         (result) => {
           this.result = result.text;
+          this.isClicked = false;
         },
         (err) => {
           console.error(err);
+          this.isClicked = false;
         }
       );
-      this.isClicked = false;
     } else {
       console.log('Exceeded maximum clicks or expired');
       this.isClicked = false;
