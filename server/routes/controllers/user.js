@@ -298,12 +298,12 @@ exports.register = async function (req, res) {
       });
     }
     const newUser = await User.create(user);
-    const newSubscriber = await mailerlite.subscribers.createOrUpdate({
-      email,
-      fields: { name },
-      groups: ["114047662393657295"],
-      status: "active",
-    });
+    // const newSubscriber = await mailerlite.subscribers.createOrUpdate({
+    //   email,
+    //   fields: { name },
+    //   groups: ["114047662393657295"],
+    //   status: "active",
+    // });
     return res.json(newUser);
   } catch (err) {
     return res.status(422).send({ errors: normalizeErrors(err.errors) });
