@@ -178,12 +178,23 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "以下を正しい文章に修正して下さい。その際に「以下は正しく整えた文章のみを出力したものです:」といった説明は不要です。\n" +
+    "あなたは優秀な編集者としてこの文章が誤解なく伝わるように校正しなさい。返答不要。\n" +
+    "#出力不要\n" +
+    "以下のように校正いたしました。\n" +
+    "句読点を適切に修正しました。\n" +
+    "誤字脱字はありませんでした。\n" +
+    "一文を60字以内に収めました。\n" +
+    "主語と述語を対応させました。\n" +
+    "#条件\n" +
+    "句読点が適切か\n" +
+    "誤字脱字\n" +
+    "一文は60字以内\n" +
+    "主述の対応\n\n" +
     req.body.prompt;
 
   try {
     const msg = await anthropic.messages.create({
-      max_tokens: 221, // (100*2 + 21) 1 token = 3文字
+      max_tokens: 258, // (100*2 + 58) 1 token = 3文字
       messages: [{ role: "user", content }],
       model: "claude-3-haiku-20240307",
     });
