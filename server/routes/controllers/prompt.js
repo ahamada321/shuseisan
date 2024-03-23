@@ -178,7 +178,7 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "以下を正しい文章に修正して下さい。その際に「以下は正しく整えた文章のみを出力したものです:」といった説明は不要です。\n" +
+    "以下を正しい文章に修正して下さい。その際に「以下は正しく整えた文章のみを出力したものです:」といった説明は不要です。\n\n" +
     req.body.prompt;
 
   try {
