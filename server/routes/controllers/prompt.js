@@ -178,12 +178,12 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "以下を正しい文章に修正して下さい。その際に「以下は正しく整えた文章のみを出力したものです:」といった説明は不要です。\n\n" +
+    "以下を正しい文章に修正して下さい。その際に「以下は正しく整えた文章のみを出力したものです:」といった説明は不要です。\n" +
     req.body.prompt;
 
   try {
     const msg = await anthropic.messages.create({
-      max_tokens: 110, // 1 token = 3文字
+      max_tokens: 221, // (100*2 + 21) 1 token = 3文字
       messages: [{ role: "user", content }],
       model: "claude-3-haiku-20240307",
     });
