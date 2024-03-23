@@ -178,7 +178,8 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "以下の文章を「正しく整えた文章のみ」出力して\n" + req.body.prompt;
+    "以下を正しい文章に修正して下さい。その際に「以下は正しく整えた文章のみを出力したものです:」といった説明は不要です。\n" +
+    req.body.prompt;
 
   try {
     const msg = await anthropic.messages.create({
