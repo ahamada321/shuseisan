@@ -69,7 +69,7 @@ export class PromptListComponent implements OnInit {
 
   shareTwitter() {
     const URL =
-      'https://twitter.com/intent/tweet?url=https://www.copy-prompt.com';
+      'https://twitter.com/intent/tweet?url=https://www.shuseisan.com';
     const PATH = this.location.path();
     window.open(
       URL +
