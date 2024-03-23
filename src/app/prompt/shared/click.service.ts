@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 export class ClickService {
   private clicks: number = 0;
   private maxClicks: number = 3;
-  private expiryTime: number = 12 * 60 * 60 * 1000; // 12時間
 
   constructor(private http: HttpClient) {}
 
@@ -31,7 +30,8 @@ export class ClickService {
     const lastClickTime = parseInt(
       localStorage.getItem('lastClickTime') || '0'
     );
-    return Date.now() - lastClickTime > this.expiryTime;
+    const expiryTime = 12 * 60 * 60 * 1000; // 12時間
+    return Date.now() - lastClickTime > expiryTime;
   }
 
   public updateLastClickTime(): void {
