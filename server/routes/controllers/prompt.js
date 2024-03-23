@@ -183,7 +183,7 @@ exports.postPrompt = async function (req, res) {
 
   try {
     const msg = await anthropic.messages.create({
-      max_tokens: 110, // 1 token = 3文字
+      max_tokens: 221, // (100*2 + 21) 1 token = 3文字
       messages: [{ role: "user", content }],
       model: "claude-3-haiku-20240307",
     });
