@@ -12,7 +12,7 @@ import { PromptService } from '../shared/prompt.service';
 })
 export class PromptListComponent implements OnInit {
   description: string =
-    'プロンプトテンプレをコピペするだけで、今まで使いこなせなかったChatGPTが超有能に生まれ変わる！';
+    '送信したメールを見返したら誤字を発見...となる前に！誤字脱字や句読点、違和感があっても直せない文章を簡単に直してもらえる';
   text: string = '';
   result: string = '';
   isClicked: boolean = false;

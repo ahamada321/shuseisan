@@ -30,9 +30,6 @@
           </div>
 
           <div *ngIf="clicks < 5" class="text-center">
-            <h3 class="description">
-              本日はあと{{ 5 - clicks }}回無料で修正できます
-            </h3>
             <button
               *ngIf="isClicked"
               [disabled]="true"
@@ -46,8 +43,12 @@
               type="submit"
               class="btn btn-success btn-lg btn-wd"
             >
-              <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
+              <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート（あと{{
+                5 - clicks
+              }}回/本日）
             </button>
+            <p class="description">1日につき5回無料で修正できます。</p>
+
             <!-- <br />
             <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
               広告非表示で何回も使いたい方
