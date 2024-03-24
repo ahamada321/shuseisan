@@ -10,12 +10,9 @@
           <p *ngFor="let error of errors">{{ error.detail }}</p>
         </div>
 
+        <h2 class="title">修正してほしい文章</h2>
         <form #textForm="ngForm" (ngSubmit)="onClick()">
-          <div
-            class="form-group"
-            [class.has-danger]="text && text.length >= 300"
-          >
-            <h2 class="title">修正してほしい文章</h2>
+          <div class="form-group" [class.has-danger]="text.length === 300">
             <textarea
               type="text"
               class="form-control textarea-limited"
