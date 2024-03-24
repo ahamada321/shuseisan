@@ -10,9 +10,9 @@
           <p *ngFor="let error of errors">{{ error.detail }}</p>
         </div>
 
+        <h2 class="title">修正してほしい文章</h2>
         <form #textForm="ngForm" (ngSubmit)="onClick()">
-          <div class="form-group">
-            <h2 class="title">修正してほしい文章</h2>
+          <div class="form-group" [class.has-danger]="text.length === 300">
             <textarea
               type="text"
               class="form-control textarea-limited"
@@ -24,7 +24,12 @@
             ></textarea>
             <span id="textarea-limited-message" class="description pull-right">
               <div *ngIf="!text">残文字数 300</div>
-              <div *ngIf="text">残文字数 {{ 300 - text.length }}</div>
+              <div *ngIf="text && text.length < 300">
+                残文字数 {{ 300 - text.length }}
+              </div>
+              <div *ngIf="text && text.length === 300" class="text-danger">
+                残文字数 <b>0</b>
+              </div>
             </span>
             <br />
           </div>
@@ -104,6 +109,7 @@
             type="text"
             class="form-control textarea-limited"
             placeholder="修正された文章"
+            [disabled]="result.length === 0"
             [(ngModel)]="result"
             name="result"
             rows="10"
