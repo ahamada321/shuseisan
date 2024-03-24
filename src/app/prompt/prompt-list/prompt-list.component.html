@@ -29,9 +29,9 @@
             <br />
           </div>
 
-          <div *ngIf="clicks < 3" class="text-center">
+          <div *ngIf="clicks < 5" class="text-center">
             <h3 class="description">
-              本日はあと{{ 3 - clicks }}回無料で修正できます
+              本日はあと{{ 5 - clicks }}回無料で修正できます
             </h3>
             <button
               *ngIf="isClicked"
@@ -53,7 +53,7 @@
               広告非表示で何回も使いたい方
             </a> -->
           </div>
-          <div *ngIf="count > 3" class="text-center">
+          <div *ngIf="count > 5" class="text-center">
             <h3 class="description">
               本日はあと{{ 30 - count }}回修正できます
             </h3>
@@ -78,7 +78,7 @@
             </a>
           </div>
         </form>
-        <div *ngIf="clicks === 3" class="text-center">
+        <div *ngIf="clicks === 5" class="text-center">
           <h3 class="description">本日の無料修正回数を使い切りました</h3>
           <button
             *ngIf="isClicked"
