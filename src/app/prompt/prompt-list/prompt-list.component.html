@@ -11,7 +11,10 @@
         </div>
 
         <form #textForm="ngForm" (ngSubmit)="onClick()">
-          <div class="form-group">
+          <div
+            class="form-group has-danger"
+            [class.has-danger]="text && text.length >= 300"
+          >
             <h2 class="title">修正してほしい文章</h2>
             <textarea
               type="text"
