@@ -178,7 +178,7 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "あなたは優秀な編集者としてこの文章が誤解なく伝わるように校正しなさい。「以下のように校正いたしました。」等の返答は不要です。\n" +
+    "「以下のように校正しました。」等の説明は不要。あなたは優秀な編集者として次の文章が誤解なく伝わるように校正した文章だけ出力して下さい。\n" +
     "#条件\n" +
     "句読点が適切か\n" +
     "誤字脱字\n" +
