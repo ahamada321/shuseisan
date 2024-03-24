@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ClickService {
   private clicks: number = 0;
-  private maxClicks: number = 3;
+  private maxClicks: number = 5;
 
   constructor(private http: HttpClient) {}
 
