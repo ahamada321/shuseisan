@@ -23,7 +23,7 @@ export class BusinessMailComponent implements OnInit {
   }
 
   updateTitleAndMeta() {
-    this.titleService.setTitle(this.title + ' | 修正さん');
+    this.titleService.setTitle('修正さん | ' + this.title);
 
     this.meta.updateTag({
       name: 'description',
