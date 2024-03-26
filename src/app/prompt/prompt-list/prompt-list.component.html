@@ -2,7 +2,21 @@
   <h1 class="title">
     <small>\ 誤字脱字や句読点のチェックに /</small><br />修正さん
   </h1>
-  <app-prompt-list-example></app-prompt-list-example>
+  <div>
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-success btn-round mb-2"
+      [routerLink]="['/tutorial']"
+      >初めての使い方ガイド
+    </a>
+    <br />
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-success btn-round"
+      [routerLink]="['/business-mail']"
+      >文章の誤字脱字を減らしたい時に
+    </a>
+  </div>
   <div class="row">
     <div class="col-md-7 ml-auto mr-auto">
       <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
