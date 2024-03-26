@@ -22,6 +22,10 @@ h3 {
   animation: shadowExpandX 2s linear infinite alternate;
 }
 
+.btn-twitter {
+  margin-bottom: 20px;
+}
+
 @keyframes shadowExpandX {
   0% {
     box-shadow: 0 0, 0 0;

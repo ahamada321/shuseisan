@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <div class="space-50"></div>
 <router-outlet></router-outlet>
+<app-footer></app-footer>
 <app-bottom-nav
   *ngIf="isMobile() && auth.isAuthenticated()"
   [titlee]="titlee"
