@@ -14,6 +14,6 @@ export class Page404Component implements OnInit {
   }
 
   updateTitle() {
-    this.titleService.setTitle('404 page not found | 修正さん');
+    this.titleService.setTitle('修正さん | 404 page not found');
   }
 }
