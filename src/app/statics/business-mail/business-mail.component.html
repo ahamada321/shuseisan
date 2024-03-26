@@ -12,10 +12,10 @@
 
 <!--     *********     Detail info     *********      -->
 <div class="section section-gray">
-  <div class="container">
+  <div class="container text-center">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto">
-        <div class="space-top"></div>
+        <h2>こんな経験ありませんか？</h2>
         <p>
           「仕事で大事なメールを送った後に、誤字・脱字に気づいてしまった。。」<br />
           「メールでの文章の言い回しが上手くできてなかったことで、取引先や上司の機嫌を損ねてしまった。。」<br />
@@ -31,9 +31,12 @@
             >綺麗に整えて</span
           >くれます！
         </p>
-        <br />
+      </div>
+      <div class="col-md-8 ml-auto mr-auto">
+        <h2>どのように使えばいい？</h2>
         <p>
-          例えば以下の文章をみてみましょう。<br />間違いが赤字になっているので目につきますが、自分が書くと見落としてしまいそうですよね。
+          例えば以下の文章をみてみましょう。<br />
+          間違いが赤字になっているので目につきますが、自分が書くと見落としてしまいそうですよね。
         </p>
         <div class="card card-just-text no-transition" data-radius="none">
           <div class="card-body">
@@ -51,17 +54,17 @@
 
         <div class="space-top"></div>
         <p>
-          直すと案外時間がかかってしまう文章も修正さんに入力、「修正スタート」ボタンをワンクリックするだけであっという間に誤字脱字を直してくれます。
+          直すと案外時間がかかってしまう文章を修正さんに入力、「修正スタート」ボタンをワンクリックするだけであっという間に誤字脱字を直してくれます。
         </p>
-
-        <div class="text-center">
-          <a
-            [routerLink]="['/tutorial']"
-            class="btn btn-lg btn-link btn-success"
-            >修正さんの使い方はこちら</a
-          >
+        <div class="card card-plain">
+          <div class="card-img-top">
+            <img class="img" src="./assets/img/tutorial/step2.jpg" />
+          </div>
         </div>
 
+        <a [routerLink]="['/tutorial']" class="btn btn-lg btn-link btn-success"
+          >「修正さん」使い方ガイドを見る</a
+        >
         <p>
           「修正スタート」ボタンを押してから１秒足らずで以下の返答がきました。
         </p>
@@ -87,15 +90,13 @@
         </div>
 
         <div class="space-top"></div>
-        <p>いかがでしょうか。一気に洗練された文章になりました。</p>
+        <p>いかがでしょう？ 一気に洗練された文章になりました。</p>
         <p>「修正さん」で誤字脱字、文章の違和感を一気に減らしてみませんか？</p>
       </div>
     </div>
     <div class="space-top"></div>
-    <div class="text-center">
-      <p>\ さっそく誤字脱字を修正しよう /</p>
-      <a [routerLink]="['/']" class="btn btn-wd btn-success">修正しに行く</a>
-    </div>
+    <p>\ さっそく誤字脱字を修正しよう /</p>
+    <a [routerLink]="['/']" class="btn btn-wd btn-success">修正しに行く</a>
   </div>
   <div class="space-top"></div>
 </div>
