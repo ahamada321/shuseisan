@@ -73,11 +73,7 @@ export class PromptListComponent implements OnInit {
       'https://twitter.com/intent/tweet?url=https://www.shuseisan.com';
     const PATH = this.location.path();
     window.open(
-      URL +
-        PATH +
-        '&text=%0A' +
-        '文章を簡単に整えてくれる修正さん' +
-        '&hashtags=修正さん',
+      URL + PATH + '誤字脱字・文章の違和感を簡単修正' + '&hashtags=修正さん',
       '_blank'
     );
   }
