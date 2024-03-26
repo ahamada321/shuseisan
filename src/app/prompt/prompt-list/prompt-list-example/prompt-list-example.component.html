@@ -1,0 +1,23 @@
+<owl-carousel-o
+  [options]="customOptions"
+  (dragging)="isDragging = $event.dragging"
+>
+  <ng-template carouselSlide>
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-success btn-round mr-2 mb-2"
+      [owlRouterLink]="['/business-mail']"
+      [stopLink]="isDragging"
+      >文章の誤字脱字を減らしたい時に
+    </a>
+  </ng-template>
+  <ng-template carouselSlide>
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-success btn-round mr-2 mb-2"
+      [owlRouterLink]="['/tutorial']"
+      [stopLink]="isDragging"
+      >初めての使い方ガイド
+    </a>
+  </ng-template>
+</owl-carousel-o>
