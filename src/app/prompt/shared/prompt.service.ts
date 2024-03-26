@@ -7,48 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class PromptService {
   constructor(private http: HttpClient) {}
 
-  public getPromptById(promptId: string): Observable<any> {
-    return this.http.get('/api/v1/prompts/' + promptId);
-  }
-
-  public getRandomPrompts(): Observable<any> {
-    return this.http.get('/api/v1/prompts/random');
-  }
-
-  public getPromptRanking(
-    pageIndex: number,
-    pageSize: number
-  ): Observable<any> {
-    return this.http.get(
-      `/api/v1/prompts/ranking?page=${pageIndex}&limit=${pageSize}`
-    );
-  }
-
-  public getPrompts(
-    keywords: any,
-    pageIndex: number,
-    pageSize: number
-  ): Observable<any> {
-    return this.http.get(
-      `/api/v1/prompts?keywords=${keywords}&page=${pageIndex}&limit=${pageSize}`
-    );
-  }
-
   public postPrompt(promptData: Prompt): Observable<any> {
     return this.http.post('/api/v1/prompts', promptData);
-  }
-
-  public deletePrompt(promptId: string): Observable<any> {
-    return this.http.delete('/api/v1/prompts/' + promptId);
-  }
-
-  public updatePrompt(promptId: string, promptData: Prompt): Observable<any> {
-    return this.http.patch('/api/v1/prompts/' + promptId, promptData);
-  }
-
-  public getMyPrompts(pageIndex: number, pageSize: number): Observable<any> {
-    return this.http.get(
-      `/api/v1/prompts/manage?page=${pageIndex}&limit=${pageSize}`
-    );
   }
 }
