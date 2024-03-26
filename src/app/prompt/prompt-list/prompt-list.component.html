@@ -1,93 +1,39 @@
-<div class="section">
-  <div class="container">
-    <div class="text-center">
-      <h1 class="title">
-        <small>\ 誤字脱字や句読点のチェックに /</small><br />修正さん
-      </h1>
-      <app-prompt-list-example></app-prompt-list-example>
-    </div>
-    <div class="row">
-      <div class="col-md-7 ml-auto mr-auto">
-        <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
-          <p *ngFor="let error of errors">{{ error.detail }}</p>
+<div class="section container text-center">
+  <h1 class="title">
+    <small>\ 誤字脱字や句読点のチェックに /</small><br />修正さん
+  </h1>
+  <app-prompt-list-example></app-prompt-list-example>
+  <div class="row">
+    <div class="col-md-7 ml-auto mr-auto">
+      <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
+        <p *ngFor="let error of errors">{{ error.detail }}</p>
+      </div>
+
+      <h2 class="title">修正してほしい文章</h2>
+      <form #textForm="ngForm" (ngSubmit)="onClick()">
+        <div class="form-group" [class.has-danger]="text.length === 300">
+          <textarea
+            type="text"
+            class="form-control textarea-limited"
+            placeholder="修正してほしい文章を入力（コピペも可能です）"
+            [(ngModel)]="text"
+            name="text"
+            rows="10"
+            maxlength="300"
+          ></textarea>
+          <span id="textarea-limited-message" class="description pull-right">
+            <div *ngIf="!text">残文字数 300</div>
+            <div *ngIf="text && text.length < 300">
+              残文字数 {{ 300 - text.length }}
+            </div>
+            <div *ngIf="text && text.length === 300" class="text-danger">
+              残文字数 <b>0</b>
+            </div>
+          </span>
+          <br />
         </div>
 
-        <h2 class="title">修正してほしい文章</h2>
-        <form #textForm="ngForm" (ngSubmit)="onClick()">
-          <div class="form-group" [class.has-danger]="text.length === 300">
-            <textarea
-              type="text"
-              class="form-control textarea-limited"
-              placeholder="修正してほしい文章を入力（コピペも可能です）"
-              [(ngModel)]="text"
-              name="text"
-              rows="10"
-              maxlength="300"
-            ></textarea>
-            <span id="textarea-limited-message" class="description pull-right">
-              <div *ngIf="!text">残文字数 300</div>
-              <div *ngIf="text && text.length < 300">
-                残文字数 {{ 300 - text.length }}
-              </div>
-              <div *ngIf="text && text.length === 300" class="text-danger">
-                残文字数 <b>0</b>
-              </div>
-            </span>
-            <br />
-          </div>
-
-          <div *ngIf="clicks < 5" class="text-center">
-            <button
-              *ngIf="isClicked"
-              [disabled]="true"
-              class="btn btn-success btn-lg btn-wd"
-            >
-              <span class="loader"></span>
-            </button>
-            <button
-              *ngIf="!isClicked"
-              [disabled]="!text"
-              type="submit"
-              class="btn btn-success btn-lg btn-wd"
-            >
-              <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート（あと{{
-                5 - clicks
-              }}回/本日）
-            </button>
-            <p class="description">1日につき5回無料で修正できます。</p>
-
-            <!-- <br />
-            <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
-              広告非表示で何回も使いたい方
-            </a> -->
-          </div>
-          <div *ngIf="count > 5" class="text-center">
-            <h3 class="description">
-              本日はあと{{ 30 - count }}回修正できます
-            </h3>
-            <button
-              *ngIf="isClicked"
-              [disabled]="true"
-              class="btn btn-success btn-lg btn-wd"
-            >
-              <span class="loader"></span>
-            </button>
-            <button
-              *ngIf="!isClicked"
-              [disabled]="!text"
-              type="submit"
-              class="btn btn-success btn-lg btn-wd"
-            >
-              <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
-            </button>
-            <br />
-            <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
-              修正回数をもっと増やしたい方はこちら
-            </a>
-          </div>
-        </form>
-        <div *ngIf="clicks === 5" class="text-center">
-          <h3 class="description">本日の無料修正回数を使い切りました</h3>
+        <div *ngIf="clicks < 5">
           <button
             *ngIf="isClicked"
             [disabled]="true"
@@ -95,57 +41,101 @@
           >
             <span class="loader"></span>
           </button>
-          <a
+          <button
             *ngIf="!isClicked"
-            [routerLink]="['/plan']"
+            [disabled]="!text"
+            type="submit"
             class="btn btn-success btn-lg btn-wd"
           >
-            <i class="nc-icon nc-button-play"></i>&nbsp;プランを変更する
+            <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート（あと{{
+              5 - clicks
+            }}回/本日）
+          </button>
+          <p class="description">1日につき5回無料で修正できます。</p>
+
+          <!-- <br />
+            <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
+              広告非表示で何回も使いたい方
+            </a> -->
+        </div>
+        <div *ngIf="count > 5">
+          <h3 class="description">本日はあと{{ 30 - count }}回修正できます</h3>
+          <button
+            *ngIf="isClicked"
+            [disabled]="true"
+            class="btn btn-success btn-lg btn-wd"
+          >
+            <span class="loader"></span>
+          </button>
+          <button
+            *ngIf="!isClicked"
+            [disabled]="!text"
+            type="submit"
+            class="btn btn-success btn-lg btn-wd"
+          >
+            <i class="nc-icon nc-button-play"></i>&nbsp;修正スタート
+          </button>
+          <br />
+          <a [routerLink]="['/plan']" class="btn btn-link btn-success btn-lg">
+            修正回数をもっと増やしたい方はこちら
           </a>
         </div>
-
-        <div class="space-top"></div>
-        <div class="form-group">
-          <h2 class="title">修正された文章</h2>
-          <textarea
-            type="text"
-            class="form-control textarea-limited"
-            placeholder="修正された文章"
-            [disabled]="result.length === 0"
-            [(ngModel)]="result"
-            name="result"
-            rows="10"
-          ></textarea>
-        </div>
-        <div class="space-top"></div>
-        <div class="text-center">
-          <button
-            *ngIf="!isCopied"
-            [disabled]="!result"
-            class="btn btn-success btn-lg btn-wd"
-            (click)="copyResult(); isCopied = true"
-          >
-            修正された文章<br />をコピーする
-          </button>
-          <button
-            *ngIf="isCopied"
-            class="btn btn-outline-success btn-lg btn-wd"
-            (click)="copyResult()"
-          >
-            コピーしました！
-          </button>
-        </div>
+      </form>
+      <div *ngIf="clicks === 5">
+        <h3 class="description">本日の無料修正回数を使い切りました</h3>
+        <button
+          *ngIf="isClicked"
+          [disabled]="true"
+          class="btn btn-success btn-lg btn-wd"
+        >
+          <span class="loader"></span>
+        </button>
+        <a
+          *ngIf="!isClicked"
+          [routerLink]="['/plan']"
+          class="btn btn-success btn-lg btn-wd"
+        >
+          <i class="nc-icon nc-button-play"></i>&nbsp;プランを変更する
+        </a>
       </div>
+
+      <div class="space-top"></div>
+      <div class="form-group">
+        <h2 class="title">修正された文章</h2>
+        <textarea
+          type="text"
+          class="form-control textarea-limited"
+          placeholder="修正された文章"
+          [disabled]="result.length === 0"
+          [(ngModel)]="result"
+          name="result"
+          rows="10"
+        ></textarea>
+      </div>
+      <div class="space-top"></div>
+      <button
+        *ngIf="!isCopied"
+        [disabled]="!result"
+        class="btn btn-success btn-lg btn-wd"
+        (click)="copyResult(); isCopied = true"
+      >
+        修正された文章<br />をコピーする
+      </button>
+      <button
+        *ngIf="isCopied"
+        class="btn btn-outline-success btn-lg btn-wd"
+        (click)="copyResult()"
+      >
+        コピーしました！
+      </button>
     </div>
   </div>
   <div class="space-50"></div>
-  <div class="text-center">
-    <h3 class="description">他の人にも教えてあげてね</h3>
-    <button class="btn btn-round btn-twitter" (click)="shareTwitter()">
-      <i class="fa fa-twitter fa-lg"></i> Twitterで友達に教える
-    </button>
-    <!-- <button class="btn btn-round btn-facebook">
+  <h3 class="description">他の人にも教えてあげてね</h3>
+  <button class="btn btn-round btn-twitter" (click)="shareTwitter()">
+    <i class="fa fa-twitter fa-lg"></i> Twitterで友達に教える
+  </button>
+  <!-- <button class="btn btn-round btn-facebook">
       <i class="fa fa-facebook-square fa-lg"></i> Facebookで友達に教える
     </button> -->
-  </div>
 </div>
