@@ -1,9 +1,12 @@
 <div class="space-50"></div>
 <div class="section">
   <div class="container">
-    <h1 class="title text-center">
-      <small>\ 誤字脱字や句読点のチェックに /</small><br />修正さん
-    </h1>
+    <div class="text-center">
+      <h1 class="title">
+        <small>\ 誤字脱字や句読点のチェックに /</small><br />修正さん
+      </h1>
+      <app-prompt-list-example></app-prompt-list-example>
+    </div>
     <div class="row">
       <div class="col-md-7 ml-auto mr-auto">
         <div *ngIf="errors && errors.length > 0" class="alert alert-danger">
