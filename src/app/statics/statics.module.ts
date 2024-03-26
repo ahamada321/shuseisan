@@ -7,15 +7,22 @@ import { Page404Component } from './page404/page404.component';
 import { TermsComponent } from './terms/terms.component';
 import { TermsTextModule } from './terms/helpers/terms-text/terms-text.module';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { BusinessMailComponent } from './business-mail/business-mail.component';
 
 const routes: Routes = [
   { path: 'terms', component: TermsComponent },
   { path: 'tutorial', component: TutorialComponent },
+  { path: 'business-mail', component: BusinessMailComponent },
   { path: '**', component: Page404Component },
 ];
 
 @NgModule({
-  declarations: [Page404Component, TermsComponent, TutorialComponent],
+  declarations: [
+    Page404Component,
+    TermsComponent,
+    TutorialComponent,
+    BusinessMailComponent,
+  ],
   exports: [],
   providers: [],
   imports: [
