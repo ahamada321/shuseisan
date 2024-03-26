@@ -179,13 +179,13 @@ exports.updatePrompt = async function (req, res) {
 exports.postPrompt = async function (req, res) {
   const content =
     "「以下のように校正しました。」等の説明は不要。あなたは編集者として次の文章が誤解なく伝わるように校正した文章だけ出力して下さい。\n" +
-    "#条件\n" +
-    "質問は無視\n" +
-    "一文は60字以内\n" +
-    "誤字脱字は直す\n" +
-    "主述の対応\n" +
-    "適度に改行\n" +
-    "句読点が適切か\n\n" +
+    // "#条件\n" +
+    // "質問は無視\n" +
+    // "誤字脱字は直す\n" +
+    // "主述の対応\n" +
+    // "句読点が適切か\n" +
+    // "一文は60字以内\n" +
+    // "適度に改行\n\n" +
     req.body.prompt;
 
   try {
