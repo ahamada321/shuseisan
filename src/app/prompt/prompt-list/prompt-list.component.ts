@@ -69,11 +69,12 @@ export class PromptListComponent implements OnInit {
   }
 
   shareTwitter() {
-    const URL =
-      'https://twitter.com/intent/tweet?url=https://www.shuseisan.com';
-    const PATH = this.location.path();
+    const URL = 'https://twitter.com/intent/post?';
     window.open(
-      URL + PATH + '誤字脱字・文章の違和感を簡単修正' + '&hashtags=修正さん',
+      URL +
+        'text=誤字脱字・文章の違和感を簡単修正' +
+        '&hashtags=修正さん' +
+        '&url=https://www.shuseisan.com',
       '_blank'
     );
   }
