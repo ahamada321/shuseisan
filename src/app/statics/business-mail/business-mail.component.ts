@@ -10,7 +10,7 @@ import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 export class BusinessMailComponent implements OnInit {
   title: string = '取引先や上司に送るビジネスメール作成に';
   description: string =
-    '「大事なメールを送る際にミスが多いのを直したい」「メール文章の誤字脱字を手軽に直したい」そんな方へ、1分以内で文章チェックしてもらえる超有能ツールが今なら無料で使えます';
+    '大事なメールを送る際にミスが多いのを直したい。文章の誤字脱字を直したい。そんな時にワンクリックで文章を校正できる「修正さん」';
 
   constructor(
     private titleService: Title,
