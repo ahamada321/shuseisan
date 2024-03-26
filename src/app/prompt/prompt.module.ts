@@ -12,7 +12,6 @@ import { PromptListComponent } from './prompt-list/prompt-list.component';
 import { QuillModule } from 'ngx-quill';
 import { PromptService } from './shared/prompt.service';
 import { ClickService } from './shared/click.service';
-import { PromptListExampleComponent } from './prompt-list/prompt-list-example/prompt-list-example.component';
 
 const routes: Routes = [
   { path: '', component: PromptListComponent },
@@ -33,11 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    PromptComponent,
-    PromptListComponent,
-    PromptListExampleComponent,
-  ],
+  declarations: [PromptComponent, PromptListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
