@@ -10,7 +10,7 @@ import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 export class TutorialComponent implements OnInit {
   title: string = '初めての使い方ガイド';
   description: string =
-    'ChatGPTでプロンプトを使うと高品質な回答が来るって聞いたけど、プロンプトってどうやって使うの？チャットGPTを使いこなしたい！という方はこちら';
+    '「修正さん」ってどうやって使うの？という方向けの初めての使い方ガイドページです。ワンクリックで文章の誤字脱字を簡単修正。';
 
   constructor(
     private titleService: Title,
