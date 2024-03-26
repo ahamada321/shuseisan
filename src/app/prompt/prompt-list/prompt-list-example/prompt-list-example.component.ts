@@ -10,15 +10,9 @@ export class PromptListExampleComponent implements OnInit {
   isDragging!: boolean;
   customOptions: OwlOptions = {
     items: 1,
-    margin: 50,
     loop: true,
     center: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
     autoplay: true,
-    dotsEach: true,
-    navSpeed: 700,
   };
   constructor() {}
   ngOnInit() {}
