@@ -8,11 +8,16 @@ import { TermsComponent } from './terms/terms.component';
 import { TermsTextModule } from './terms/helpers/terms-text/terms-text.module';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { BusinessMailComponent } from './business-mail/business-mail.component';
+import { HowToAddToHomescreenComponent } from './how-to-add-to-homescreen/how-to-add-to-homescreen.component';
 
 const routes: Routes = [
   { path: 'terms', component: TermsComponent },
   { path: 'tutorial', component: TutorialComponent },
   { path: 'business-mail', component: BusinessMailComponent },
+  {
+    path: 'how-to-add-to-homescreen',
+    component: HowToAddToHomescreenComponent,
+  },
   { path: '**', component: Page404Component },
 ];
 
@@ -22,6 +27,7 @@ const routes: Routes = [
     TermsComponent,
     TutorialComponent,
     BusinessMailComponent,
+    HowToAddToHomescreenComponent,
   ],
   exports: [],
   providers: [],
