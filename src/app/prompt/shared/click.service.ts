@@ -30,7 +30,7 @@ export class ClickService {
     const lastClickTime = parseInt(
       localStorage.getItem('lastClickTime') || '0'
     );
-    const expiryTime = 12 * 60 * 60 * 1000; // 12時間
+    const expiryTime = 10 * 60 * 60 * 1000; // 10時間
     return Date.now() - lastClickTime > expiryTime;
   }
 
