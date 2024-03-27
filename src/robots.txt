@@ -2,6 +2,7 @@
 User-agent: *
 Disallow: /user/
 Disallow: /plan
+Disallow: /register
 
 # Sitemap
 Sitemap: https://www.shuseisan.com/sitemap.xml
