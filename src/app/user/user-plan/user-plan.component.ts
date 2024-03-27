@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-plan',
@@ -14,15 +13,10 @@ import Swal from 'sweetalert2';
 export class UserPlanComponent implements OnInit, OnDestroy {
   focus1 = false;
   activeTab = 1;
-  activeTab1 = 1;
   isClicked: boolean = false;
   errors: any[] = [];
 
-  constructor(
-    private auth: MyOriginAuthService,
-    private router: Router,
-    private userService: UserService
-  ) {}
+  constructor(private auth: MyOriginAuthService) {}
 
   ngOnInit() {}
 
