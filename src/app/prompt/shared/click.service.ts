@@ -36,8 +36,9 @@ export class ClickService {
       localStorage.setItem('lastClickTime', Date.now().toString());
       localStorage.setItem('clicks', '0');
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   public updateLastClickTime(): void {
