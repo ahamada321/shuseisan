@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { ClickService } from '../shared/click.service';
 import { Router } from '@angular/router';
@@ -25,7 +24,6 @@ export class PromptListComponent implements OnInit {
     private router: Router,
     public auth: MyOriginAuthService,
     private clickService: ClickService,
-    private location: Location,
     private promptService: PromptService
   ) {}
 
