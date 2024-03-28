@@ -27,6 +27,8 @@ export class ClickService {
   }
 
   public isExpired(): boolean {
+    localStorage.removeItem('app-auth');
+    localStorage.removeItem('app-meta');
     const lastClickTime = parseInt(
       localStorage.getItem('lastClickTime') || '0'
     );
