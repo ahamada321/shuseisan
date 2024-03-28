@@ -35,6 +35,7 @@ export class ClickService {
     if (Date.now() - lastClickTime > expiryTime) {
       localStorage.setItem('lastClickTime', Date.now().toString());
       localStorage.setItem('clicks', '0');
+      this.clicks = 0;
       return true;
     } else {
       return false;
