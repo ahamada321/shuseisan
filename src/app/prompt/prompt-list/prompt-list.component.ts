@@ -30,21 +30,14 @@ export class PromptListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.clickService.isExpired()) {
-      this.clickService.updateLastClickTime();
-    } else {
+    if (!this.clickService.isExpired()) {
       this.clicks = this.clickService.getClicks();
     }
   }
 
   onClick() {
-    this.isClicked = true;
-    if (
-      !this.clickService.hasExceededMaxClicks() &&
-      !this.clickService.isExpired()
-    ) {
-      this.clickService.incrementClick();
-      this.clicks = this.clickService.getClicks();
+    if (!this.clickService.hasExceededMaxClicks()) {
+      this.clicks = this.clickService.incrementClick();
       this.clickService.updateLastClickTime();
 
       this.promptService.postPrompt({ prompt: this.text }).subscribe(
@@ -58,13 +51,13 @@ export class PromptListComponent implements OnInit {
         }
       );
     } else {
-      console.log('Exceeded maximum clicks or expired');
+      console.error('Exceeded maximum clicks or expired');
       this.isClicked = false;
     }
   }
 
   copyResult() {
-    // ここでクリップボードにコピーするロジックを実装
+    // Copy to clipboard
     navigator.clipboard.writeText(this.result);
   }
 

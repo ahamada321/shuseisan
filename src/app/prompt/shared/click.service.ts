@@ -15,11 +15,12 @@ export class ClickService {
     return this.clicks;
   }
 
-  public incrementClick(): void {
+  public incrementClick(): number {
     if (this.clicks < this.maxClicks) {
       this.clicks++;
       localStorage.setItem('clicks', this.clicks.toString());
     }
+    return this.clicks;
   }
 
   public hasExceededMaxClicks(): boolean {
@@ -27,13 +28,16 @@ export class ClickService {
   }
 
   public isExpired(): boolean {
-    localStorage.removeItem('app-auth');
-    localStorage.removeItem('app-meta');
     const lastClickTime = parseInt(
       localStorage.getItem('lastClickTime') || '0'
     );
     const expiryTime = 10 * 60 * 60 * 1000; // 10時間
-    return Date.now() - lastClickTime > expiryTime;
+    if (Date.now() - lastClickTime > expiryTime) {
+      localStorage.setItem('clicks', '0');
+      this.updateLastClickTime();
+      return true;
+    }
+    return false;
   }
 
   public updateLastClickTime(): void {
