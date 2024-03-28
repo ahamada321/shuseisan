@@ -33,8 +33,8 @@ export class ClickService {
     );
     const expiryTime = 10 * 60 * 60 * 1000; // 10時間
     if (Date.now() - lastClickTime > expiryTime) {
+      localStorage.setItem('lastClickTime', Date.now().toString());
       localStorage.setItem('clicks', '0');
-      this.updateLastClickTime();
       return true;
     }
     return false;
