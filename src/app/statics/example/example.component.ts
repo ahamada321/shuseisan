@@ -3,11 +3,11 @@ import { Meta, Title } from '@angular/platform-browser';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 
 @Component({
-  selector: 'app-business-mail',
-  templateUrl: './business-mail.component.html',
-  styleUrls: ['./business-mail.component.scss'],
+  selector: 'app-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['./example.component.scss'],
 })
-export class BusinessMailComponent implements OnInit {
+export class ExampleComponent implements OnInit {
   title: string = '取引先や上司に送るビジネスメール作成に';
   description: string =
     '大事なメールを送る際にミスが多いのを直したい。文章の誤字脱字を直したい。そんな時にワンクリックで文章を校正できる「修正さん」';

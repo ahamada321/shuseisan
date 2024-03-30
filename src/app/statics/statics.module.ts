@@ -7,13 +7,13 @@ import { Page404Component } from './page404/page404.component';
 import { TermsComponent } from './terms/terms.component';
 import { TermsTextModule } from './terms/helpers/terms-text/terms-text.module';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { BusinessMailComponent } from './business-mail/business-mail.component';
+import { ExampleComponent } from './example/example.component';
 import { HowToAddToHomescreenComponent } from './how-to-add-to-homescreen/how-to-add-to-homescreen.component';
 
 const routes: Routes = [
   { path: 'terms', component: TermsComponent },
   { path: 'tutorial', component: TutorialComponent },
-  { path: 'business-mail', component: BusinessMailComponent },
+  { path: 'example', component: ExampleComponent },
   {
     path: 'how-to-add-to-homescreen',
     component: HowToAddToHomescreenComponent,
@@ -26,7 +26,7 @@ const routes: Routes = [
     Page404Component,
     TermsComponent,
     TutorialComponent,
-    BusinessMailComponent,
+    ExampleComponent,
     HowToAddToHomescreenComponent,
   ],
   exports: [],
