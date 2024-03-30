@@ -24,8 +24,11 @@
       </div>
 
       <h2 class="title">修正してほしい文章</h2>
-      <button (click)="insertSampleText()" class="btn btn-link btn-success">
-        サンプルの文章
+      <button
+        (click)="insertSampleText()"
+        class="btn btn-link btn-success btn-sm mb-2"
+      >
+        誤記サンプル文を入力
       </button>
       <form #textForm="ngForm" (ngSubmit)="onClick()">
         <div class="form-group" [class.has-danger]="text.length === 300">

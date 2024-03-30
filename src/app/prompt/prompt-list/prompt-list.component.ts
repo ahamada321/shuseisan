@@ -13,9 +13,11 @@ export class PromptListComponent implements OnInit {
   description: string =
     '送信したメールを見返したら誤字を発見...となる前に！誤字脱字や句読点、違和感があっても直せない文章を簡単に直してもらえる';
   text: string = '';
-  sampleText =
-    'これはサンプルの文章です。\n恐れ入りますが、また明日になりましてお電話のお時間をご連絡せていただきますので引き続きどうぞよろしくお願い致します。';
   result: string = '';
+  sampleText: string =
+    '以下は誤記サンプル文です。\n恐れ入りますが、また明日になりましてお電話のお時間をご連絡せていただきますので引き続きどうぞよろしくお願い致します。';
+  sampleResult: string =
+    '恐れ入りますが、また明日になりましたらお電話の時間をご連絡いたします。よろしくお願いいたします。';
   isClicked: boolean = false;
   isCopied: boolean = false;
   errors: any;
@@ -36,6 +38,14 @@ export class PromptListComponent implements OnInit {
   }
 
   onClick() {
+    if (this.text.includes('以下は誤記サンプル文です。\n')) {
+      this.isClicked = true;
+      setTimeout(() => {
+        this.result = this.sampleResult;
+        this.isClicked = false;
+      }, 1500); // 1500ミリ秒（1秒）後に delayedProcess() 関数を実行
+      return;
+    }
     if (!this.clickService.hasExceededMaxClicks()) {
       this.clicks = this.clickService.incrementClick();
       this.clickService.updateLastClickTime();
