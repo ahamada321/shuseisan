@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { ClickService } from '../shared/click.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PromptService } from '../shared/prompt.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-prompt-list',
@@ -28,7 +30,8 @@ export class PromptListComponent implements OnInit {
     private router: Router,
     public auth: MyOriginAuthService,
     private clickService: ClickService,
-    private promptService: PromptService
+    private promptService: PromptService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -89,5 +92,26 @@ export class PromptListComponent implements OnInit {
         '&url=https://www.shuseisan.com',
       '_blank'
     );
+  }
+
+  showSwalInfo() {
+    Swal.fire({
+      icon: 'info',
+      html: `
+      <p>修正さんをホーム画面に追加して、再度アクセスできるようにしましょう。<br>12時間後にまた修正できるようになります。
+    `,
+      customClass: {
+        confirmButton: 'btn btn-success btn-lg',
+      },
+      confirmButtonText: `
+      ホーム画面へ追加する方法
+    `,
+      buttonsStyling: false,
+      showCloseButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/how-to-add-to-homescreen']);
+      }
+    });
   }
 }
