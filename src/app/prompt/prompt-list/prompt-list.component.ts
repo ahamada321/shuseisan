@@ -13,6 +13,8 @@ export class PromptListComponent implements OnInit {
   description: string =
     '送信したメールを見返したら誤字を発見...となる前に！誤字脱字や句読点、違和感があっても直せない文章を簡単に直してもらえる';
   text: string = '';
+  sampleText =
+    'これはサンプルの文章です。\n恐れ入りますが、また明日になりましてお電話のお時間をご連絡せていただきますので引き続きどうぞよろしくお願い致します。';
   result: string = '';
   isClicked: boolean = false;
   isCopied: boolean = false;
@@ -52,6 +54,10 @@ export class PromptListComponent implements OnInit {
       console.error('Exceeded maximum clicks or expired');
       this.isClicked = false;
     }
+  }
+
+  insertSampleText() {
+    this.text = this.sampleText;
   }
 
   copyResult() {

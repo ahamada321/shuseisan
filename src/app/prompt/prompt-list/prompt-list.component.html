@@ -24,6 +24,9 @@
       </div>
 
       <h2 class="title">修正してほしい文章</h2>
+      <button (click)="insertSampleText()" class="btn btn-link btn-success">
+        サンプルの文章
+      </button>
       <form #textForm="ngForm" (ngSubmit)="onClick()">
         <div class="form-group" [class.has-danger]="text.length === 300">
           <textarea
