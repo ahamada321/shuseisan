@@ -38,21 +38,22 @@ export class PromptListComponent implements OnInit {
   }
 
   onClick() {
-    if (this.text.includes('以下は誤記サンプル文です。\n')) {
-      this.isClicked = true;
-      setTimeout(() => {
-        if (this.text === this.sampleText) {
-          this.result = this.sampleResult;
-        } else {
-          this.result = '修正したい文章のみを入力してください。';
-        }
-        this.isClicked = false;
-      }, 1500); // Wait 1500ms
-      return;
-    }
+    this.isClicked = true;
     if (!this.clickService.hasExceededMaxClicks()) {
       this.clicks = this.clickService.incrementClick();
       this.clickService.updateLastClickTime();
+
+      if (this.text.includes('以下は誤記サンプル文です。\n')) {
+        setTimeout(() => {
+          if (this.text === this.sampleText) {
+            this.result = this.sampleResult;
+          } else {
+            this.result = '修正したい文章のみを入力してください。';
+          }
+          this.isClicked = false;
+        }, 1500); // Wait 1500ms
+        return;
+      }
 
       this.promptService.postPrompt({ prompt: this.text }).subscribe(
         (result) => {
