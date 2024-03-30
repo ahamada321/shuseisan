@@ -54,11 +54,7 @@
         </div>
 
         <div *ngIf="clicks < 5">
-          <button
-            *ngIf="isClicked"
-            [disabled]="true"
-            class="btn btn-success btn-lg btn-wd"
-          >
+          <button *ngIf="isClicked" [disabled]="true" class="btn btn-lg btn-wd">
             <span class="loader"></span>
           </button>
           <button
@@ -80,11 +76,7 @@
         </div>
         <div *ngIf="count > 5">
           <h3 class="description">本日はあと{{ 30 - count }}回修正できます</h3>
-          <button
-            *ngIf="isClicked"
-            [disabled]="true"
-            class="btn btn-success btn-lg btn-wd"
-          >
+          <button *ngIf="isClicked" [disabled]="true" class="btn btn-lg btn-wd">
             <span class="loader"></span>
           </button>
           <button
@@ -103,11 +95,7 @@
       </form>
       <div *ngIf="clicks === 5">
         <h3 class="description">本日の無料修正回数を使い切りました</h3>
-        <button
-          *ngIf="isClicked"
-          [disabled]="true"
-          class="btn btn-success btn-lg btn-wd"
-        >
+        <button *ngIf="isClicked" [disabled]="true" class="btn btn-lg btn-wd">
           <span class="loader"></span>
         </button>
         <a
