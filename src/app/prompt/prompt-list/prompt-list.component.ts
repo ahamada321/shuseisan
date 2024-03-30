@@ -41,9 +41,13 @@ export class PromptListComponent implements OnInit {
     if (this.text.includes('以下は誤記サンプル文です。\n')) {
       this.isClicked = true;
       setTimeout(() => {
-        this.result = this.sampleResult;
+        if (this.text === this.sampleText) {
+          this.result = this.sampleResult;
+        } else {
+          this.result = '修正したい文章のみを入力してください。';
+        }
         this.isClicked = false;
-      }, 1500); // 1500ミリ秒（1秒）後に delayedProcess() 関数を実行
+      }, 1500); // Wait 1500ms
       return;
     }
     if (!this.clickService.hasExceededMaxClicks()) {
