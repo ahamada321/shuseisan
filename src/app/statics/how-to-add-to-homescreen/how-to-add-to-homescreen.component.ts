@@ -8,7 +8,7 @@ import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
   styleUrls: ['./how-to-add-to-homescreen.component.scss'],
 })
 export class HowToAddToHomescreenComponent implements OnInit {
-  title: string = '修正さんはホームスクリーンからも使えます';
+  title: string = '修正さんはスマホのホーム画面から使えます';
   description: string =
     '「修正さん」に簡単にアクセスするにはどうすればいいの？という方向けにホーム画面に追加する方法をご紹介！';
 
