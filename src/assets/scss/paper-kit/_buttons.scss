@@ -151,7 +151,8 @@
   &:disabled,
   &[disabled],
   &.disabled {
-    @include opacity(0.5);
+    // @include opacity(0.5);
+    @include opacity(0.4); // Changed by Hamada
   }
 }
 .btn-link {
