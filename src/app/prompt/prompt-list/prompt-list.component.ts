@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyOriginAuthService } from 'src/app/auth/shared/auth.service';
 import { ClickService } from '../shared/click.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { PromptService } from '../shared/prompt.service';
 import Swal from 'sweetalert2';
@@ -30,8 +29,7 @@ export class PromptListComponent implements OnInit {
     private router: Router,
     public auth: MyOriginAuthService,
     private clickService: ClickService,
-    private promptService: PromptService,
-    private modalService: NgbModal
+    private promptService: PromptService
   ) {}
 
   ngOnInit() {
@@ -81,6 +79,13 @@ export class PromptListComponent implements OnInit {
   copyResult() {
     // Copy to clipboard
     navigator.clipboard.writeText(this.result);
+
+    if (
+      this.clickService.hasExceededMaxClicks() &&
+      !this.clickService.isNotFirstExceed()
+    ) {
+      this.showSwalInfo();
+    }
   }
 
   shareTwitter() {
@@ -97,15 +102,18 @@ export class PromptListComponent implements OnInit {
   showSwalInfo() {
     Swal.fire({
       icon: 'info',
+      title: 'ホーム画面に追加しましょう',
       html: `
-      <p>修正さんをホーム画面に追加して、再度アクセスできるようにしましょう。<br>12時間後にまた修正できるようになります。
+      <p>スマートフォンをご利用の方は、<br>ホーム画面に「修正さん」追加することで、<br>また簡単にアクセスできます。</p>
+      <p>12時間後に再び修正できるようになります。</p>
     `,
       customClass: {
         confirmButton: 'btn btn-success btn-lg',
       },
       confirmButtonText: `
-      ホーム画面へ追加する方法
+      ホーム画面へ追加する方法を見る
     `,
+      allowOutsideClick: false,
       buttonsStyling: false,
       showCloseButton: true,
     }).then((result) => {

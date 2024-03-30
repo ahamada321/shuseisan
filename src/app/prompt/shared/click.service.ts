@@ -27,6 +27,15 @@ export class ClickService {
     return this.clicks >= this.maxClicks;
   }
 
+  public isNotFirstExceed(): boolean {
+    if ((localStorage.getItem('isNotFirstExceed') || 'false') === 'true') {
+      return true;
+    } else {
+      localStorage.setItem('isNotFirstExceed', 'true');
+      return false;
+    }
+  }
+
   public isExpired(): boolean {
     const lastClickTime = parseInt(
       localStorage.getItem('lastClickTime') || '0'
