@@ -13,7 +13,7 @@ import { HowToAddToHomescreenComponent } from './how-to-add-to-homescreen/how-to
 const routes: Routes = [
   { path: 'terms', component: TermsComponent },
   { path: 'tutorial', component: TutorialComponent },
-  { path: 'example', component: ExampleComponent },
+  { path: 'business-mail', component: ExampleComponent },
   {
     path: 'how-to-add-to-homescreen',
     component: HowToAddToHomescreenComponent,
