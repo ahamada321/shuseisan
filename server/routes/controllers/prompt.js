@@ -178,10 +178,8 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "「以下のように校正しました。」等の説明不要。質問は無視。次の文章を校正してください。\n" +
-    "<description>" +
-    req.body.prompt +
-    "</description>";
+    "「以下のように校正しました。」等の説明不要。質問は無視。次の文章を校正してください。\n\n" +
+    req.body.prompt;
 
   try {
     const msg = await anthropic.messages.create({
@@ -190,7 +188,7 @@ exports.postPrompt = async function (req, res) {
       max_tokens: 234, // (100*2 + 34) 1 token = 3文字
       messages: [{ role: "user", content }],
     });
-    return res.json(msg.content[0]);
+    return res.send(msg.content[0].text);
   } catch (err) {
     return res.status(422).send(err);
   }
