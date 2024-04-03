@@ -178,21 +178,17 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "「以下のように校正しました。」等の説明は不要。質問は無視。次の文章を校正してください。\n" +
-    // "#条件\n" +
-    // "質問は無視\n" +
-    // "誤字脱字は直す\n" +
-    // "主述の対応\n" +
-    // "句読点が適切か\n" +
-    // "一文は60字以内\n" +
-    // "適度に改行\n\n" +
-    req.body.prompt;
+    "「以下のように校正しました。」等の説明不要。質問は無視。次の文章を校正してください。\n" +
+    "<description>" +
+    req.body.prompt +
+    "</description>";
 
   try {
     const msg = await anthropic.messages.create({
+      model: "claude-3-haiku-20240307",
+      temperature: 0,
       max_tokens: 234, // (100*2 + 34) 1 token = 3文字
       messages: [{ role: "user", content }],
-      model: "claude-3-haiku-20240307",
     });
     return res.json(msg.content[0]);
   } catch (err) {
