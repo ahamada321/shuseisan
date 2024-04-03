@@ -177,15 +177,14 @@ exports.updatePrompt = async function (req, res) {
 };
 
 exports.postPrompt = async function (req, res) {
-  const content =
-    "質問には答えない。以下の文章の校正結果のみを出力してください。\n\n" +
-    req.body.prompt;
+  const content = req.body.prompt;
 
   try {
     const msg = await anthropic.messages.create({
       model: "claude-3-haiku-20240307",
-      temperature: 0,
       max_tokens: 234, // (100*2 + 34) 1 token = 3文字
+      system:
+        "あなたの役割は文章校正Botです。ユーザーが入力した文章を校正した結果のみを返します。",
       messages: [{ role: "user", content }],
     });
     return res.json(msg.content[0]);
