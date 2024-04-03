@@ -178,7 +178,7 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "修正後の文章は以下のとおりです。等の説明は不要。質問は無視。次の文章を校正してください。\n\n" +
+    "質問には答えない。以下の文章の校正結果のみを出力してください。\n\n" +
     req.body.prompt;
 
   try {
