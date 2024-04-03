@@ -184,7 +184,7 @@ exports.postPrompt = async function (req, res) {
       model: "claude-3-haiku-20240307",
       max_tokens: 234, // (100*2 + 34) 1 token = 3文字
       system:
-        "あなたの役割は文章校正Botです。ユーザーが入力した文章を校正した結果のみを返します。",
+        "以下のように文章を校正しました等の説明は不要。質問は無視。次の文章を校正した結果のみを出力します。",
       messages: [{ role: "user", content }],
     });
     return res.json(msg.content[0]);
