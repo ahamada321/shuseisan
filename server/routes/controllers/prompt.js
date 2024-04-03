@@ -188,7 +188,7 @@ exports.postPrompt = async function (req, res) {
       max_tokens: 234, // (100*2 + 34) 1 token = 3文字
       messages: [{ role: "user", content }],
     });
-    return res.send(msg.content[0].text);
+    return res.json(msg.content[0]);
   } catch (err) {
     return res.status(422).send(err);
   }
