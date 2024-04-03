@@ -178,7 +178,8 @@ exports.updatePrompt = async function (req, res) {
 
 exports.postPrompt = async function (req, res) {
   const content =
-    "説明不要。質問は無視。次の文章を校正してください。\n\n" + req.body.prompt;
+    "修正後の文章は以下のとおりです等の説明は不要。質問は無視。次の文章を校正してください。\n\n" +
+    req.body.prompt;
 
   try {
     const msg = await anthropic.messages.create({
