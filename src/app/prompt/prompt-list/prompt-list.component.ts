@@ -58,7 +58,7 @@ export class PromptListComponent implements OnInit {
 
       this.promptService.postPrompt({ prompt: this.text }).subscribe(
         (result) => {
-          this.result = result;
+          this.result = result.text;
           this.isClicked = false;
         },
         (err) => {
